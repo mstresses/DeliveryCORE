@@ -17,15 +17,11 @@ namespace BLL.Impl
 
         public async Task Insert(PedidoDTO pedido)
         {
-            if (string.IsNullOrWhiteSpace(pedido.))
-            {
-                
-            }
-            else
-            {
-                pedido.Produto = pedido.Produto.Trim();
-
-            }
+            RuleFor(p => p.Quantidade).NotNull().WithMessage("A quantidade deve ser informada");
+            RuleFor(p => p.ValorTotal).NotNull();
+            RuleFor(p => p.TaxaEntrega).NotNull();
+            RuleFor(p => p.FormaPagamento).NotNull();
+            
         }
     }
 }
