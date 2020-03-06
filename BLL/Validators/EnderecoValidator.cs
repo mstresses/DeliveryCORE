@@ -11,7 +11,6 @@ namespace BLL.Validators
     {
         public EnderecoValidator()
         {
-            List<Error> erros = new List<Error>();
             RuleFor(e => e.CEP).NotNull().WithMessage("O CEP deve ser informado.");
 
             RuleFor(e => e.Rua).NotNull().WithMessage("O nome da rua deve ser informado.");

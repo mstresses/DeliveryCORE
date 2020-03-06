@@ -1,5 +1,6 @@
 ﻿using DTO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -9,7 +10,7 @@ namespace DAO
 {
     public class DeliveryContext : DbContext
     {
-        public DeliveryContext():base()
+        public DeliveryContext() : base()
         {
 
         }
@@ -19,17 +20,10 @@ namespace DAO
         public DbSet<ProdutoDTO> Produtos { get; set; }
         public DbSet<PedidoDTO> Pedidos { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
-            modelBuilder.Properties()
-                        .Where(c => c.PropertyType == typeof(string))
-                        .Configure(c => c.IsRequired().IsUnicode(false));
-
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }
