@@ -7,20 +7,23 @@ using DTO;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
     public class RestauranteService : AbstractValidator<RestauranteDTO>, IRestauranteService
     {
+        List<string> Erros = new List<string>();
         public async Task Insert(RestauranteDTO restaurante)
         {
-            //RestauranteRepository repository = new RestauranteRepository();
-            //var resposta = restaurante.CNPJ.IsValidCNPJ();
-            //if (resposta != "")
+            RestauranteRepository repository = new RestauranteRepository();
+            var resposta = restaurante.CNPJ.IsValidCNPJ();
+            if (resposta != "") Erros.Add("CNPJ INVALIDO =" + resposta);
 
             RuleFor(r => r.NomeFantasia).NotNull().WithMessage("O nome deve ser informado.");
             RuleFor(r => r.NomeFantasia).MaximumLength(60).WithMessage("O nome deve ter no máximo 60 caracteres.");
+
 
             RuleFor(r => r.CNPJ).NotNull().WithMessage("O CNPJ deve ser informado.");
             RuleFor(r => r.CNPJ).Length(18);
@@ -41,10 +44,11 @@ namespace BLL.Impl
                     error.Add(new Error() { FieldName = "CNPJ", Message = "CNPJ já cadastrado" });
                     throw new Exception();
                 }
-                //Log.Write("erro 666 " + ex.StackTrace);
-                throw new Exception("Erro no banco de dados.");
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
             }
         }
+
         public Task<List<RestauranteDTO>> GetRestaurantes()
         {
             throw new NotImplementedException();

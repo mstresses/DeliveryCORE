@@ -17,6 +17,7 @@ namespace DeliveryCORE.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public IActionResult Cadastrar()
         {
@@ -28,18 +29,14 @@ namespace DeliveryCORE.Controllers
         {
             var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, RestauranteDTO>(); });
             IMapper mapper = configuration.CreateMapper();
-            RestauranteDTO restaurante = mapper.Map<RestauranteDTO>(restauranteViewModel);
+            RestauranteDTO fornecedor = mapper.Map<RestauranteDTO>(restauranteViewModel);
 
             RestauranteService svc = new RestauranteService();
             try
             {
-                await svc.(restaurante);
-                return RedirectToAction("Index", "Restaurante");
+                await svc.Insert(fornecedor);
+                return RedirectToAction("Index", "Produto");
             }
-            //catch (NecoException ex)
-            //{
-            //    ViewBag.Errors = ex.Errors;
-            //}
             catch (Exception ex)
             {
                 ViewBag.ErroGenerico = ex.Message;
@@ -47,8 +44,8 @@ namespace DeliveryCORE.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult PesquisaCEP(string cep)
+        [System.Web.Mvc.HttpPost]
+        public IActionResult PesquisaCEP(string cep)
         {
             cep = cep.Replace("-", "");
             CepRemoteService cepSvc = new CepRemoteService(cep);
@@ -59,7 +56,7 @@ namespace DeliveryCORE.Controllers
                 UF = cepSvc.UF,
                 Cidade = cepSvc.Cidade
             };
-            //return Json(obj, JsonRequestBehavior.AllowGet);
+            return Json(obj, System.Web.Mvc.JsonRequestBehavior.AllowGet);
         }
     }
 }
