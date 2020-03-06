@@ -17,7 +17,7 @@ namespace DAO
                 context.Restaurantes.Add(restaurante);
                 await context.SaveChangesAsync();
             }
-        }
+        } 
 
         public async Task<List<RestauranteDTO>> GetRestaurantes()
         {
@@ -26,5 +26,8 @@ namespace DAO
                 return await context.Restaurantes.ToListAsync();
             }
         }
+
+        
+        
     }
 }
