@@ -15,9 +15,9 @@ namespace BLL.Impl
     {
         public async Task Insert(RestauranteDTO restaurante)
         {
-            //RestauranteRepository repository = new RestauranteRepository();
-            //var resposta = restaurante.CNPJ.IsValidCNPJ();
-            //if (resposta != "")
+            RestauranteRepository repository = new RestauranteRepository();
+            var resposta = restaurante.CNPJ.IsValidCNPJ();
+            if (resposta != "")
 
             RuleFor(r => r.NomeFantasia).NotNull().WithMessage("O nome deve ser informado.");
             RuleFor(r => r.NomeFantasia).MaximumLength(60).WithMessage("O nome deve ter no máximo 60 caracteres.");
