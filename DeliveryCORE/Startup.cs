@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.Impl;
+using BLL.Interfaces;
 using DAO;
+using DAO.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,8 +29,20 @@ namespace DeliveryCORE
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddDbContext<DeliveryContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("RazorPagesMovieContext"))) ;
+            services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RazorPagesMovieContext")));
+
+            services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+
+            //services.AddTransient<IProdutoService, ProdutoService>();
+            //services.AddTransient<IProdutoRepository, ProdutoRepository>();
+
+            //services.AddTransient<IPedidoService, PedidoService>();
+            //services.AddTransient<IPedidoRepository, PedidoRepository>();
+
+            services.AddTransient<IRestauranteService, RestauranteService>();
+            services.AddTransient<IRestauranteRepository, RestauranteRepository>();
+            services.AddDbContextPool<DeliveryContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
 
             services.AddControllersWithViews();
         }

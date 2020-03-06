@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Impl;
+using BLL.Interfaces;
 using BLL.Remote;
 using DeliveryCORE.Models;
 using DTO;
@@ -13,6 +14,13 @@ namespace DeliveryCORE.Controllers
 {
     public class RestauranteController : Controller
     {
+        private IRestauranteService _restauranteService;
+
+        public RestauranteController(IRestauranteService restauranteService)
+        {
+            this._restauranteService = restauranteService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -27,15 +35,16 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(RestauranteInsertViewModel restauranteViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, RestauranteDTO>(); });
-            IMapper mapper = configuration.CreateMapper();
-            RestauranteDTO fornecedor = mapper.Map<RestauranteDTO>(restauranteViewModel);
+            await _restauranteService.Insert(new ProdutoDTO());
 
-            RestauranteService svc = new RestauranteService();
+            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, ProdutoDTO>(); });
+            IMapper mapper = configuration.CreateMapper();
+            ProdutoDTO restaurante = mapper.Map<ProdutoDTO>(restauranteViewModel);
+
             try
             {
-                await svc.Insert(fornecedor);
-                return RedirectToAction("Index", "Produto");
+                await _restauranteService.Insert(restaurante);
+                return RedirectToAction("Index", "Restaurante");
             }
             catch (Exception ex)
             {

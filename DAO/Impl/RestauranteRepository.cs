@@ -10,24 +10,28 @@ namespace DAO
 {
     public class RestauranteRepository : IRestauranteRepository
     {
-        public async Task Insert(RestauranteDTO restaurante)
+        private DeliveryContext _context;
+
+        public RestauranteRepository(DeliveryContext context) //Contrutor com INJEÇÃO DE DEPENDENCIA.
+        {
+            this._context = context;
+        }
+
+        public async Task Insert(ProdutoDTO restaurante)
         {
             using (var context = new DeliveryContext())
             {
-                context.Restaurantes.Add(restaurante);
+                this._context.Restaurantes.Add(restaurante);
                 await context.SaveChangesAsync();
             }
         } 
 
-        public async Task<List<RestauranteDTO>> GetRestaurantes()
+        public async Task<List<ProdutoDTO>> GetRestaurantes()
         {
             using (var context = new DeliveryContext())
             {
-                return await context.Restaurantes.ToListAsync();
+                return await _context.Restaurantes.ToListAsync();
             }
         }
-
-        
-        
     }
 }

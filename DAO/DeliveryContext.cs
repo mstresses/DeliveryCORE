@@ -16,12 +16,14 @@ namespace DAO
         }
 
         public DbSet<ClienteDTO> Clientes { get; set; }
-        public DbSet<RestauranteDTO> Restaurantes { get; set; }
+        public DbSet<ProdutoDTO> Restaurantes { get; set; }
         public DbSet<ProdutoDTO> Produtos { get; set; }
         public DbSet<PedidoDTO> Pedidos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //UTILIZAR REFLECTION PARA CRIAR CONFIGURAÇÕES GLOBAIS
+
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }

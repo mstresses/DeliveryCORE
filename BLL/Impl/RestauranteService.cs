@@ -3,6 +3,7 @@ using BLL.Validators;
 using Common;
 using Common.Extensions;
 using DAO;
+using DAO.Interfaces;
 using DTO;
 using FluentValidation;
 using System;
@@ -12,18 +13,23 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class RestauranteService : AbstractValidator<RestauranteDTO>, IRestauranteService
+    public class RestauranteService : AbstractValidator<ProdutoDTO>, IRestauranteService
     {
         List<string> Erros = new List<string>();
-        public async Task Insert(RestauranteDTO restaurante)
+        private IRestauranteRepository _restauranteRepository;
+
+        public RestauranteService(IRestauranteRepository restauranteRepository)
         {
-            RestauranteRepository repository = new RestauranteRepository();
+            this._restauranteRepository = restauranteRepository;
+        }
+
+        public async Task Insert(ProdutoDTO restaurante)
+        {
             var resposta = restaurante.CNPJ.IsValidCNPJ();
             if (resposta != "") Erros.Add("CNPJ INVALIDO =" + resposta);
 
             RuleFor(r => r.NomeFantasia).NotNull().WithMessage("O nome deve ser informado.");
             RuleFor(r => r.NomeFantasia).MaximumLength(60).WithMessage("O nome deve ter no máximo 60 caracteres.");
-
 
             RuleFor(r => r.CNPJ).NotNull().WithMessage("O CNPJ deve ser informado.");
             RuleFor(r => r.CNPJ).Length(18);
@@ -34,7 +40,7 @@ namespace BLL.Impl
 
             try
             {
-                await repository.Insert(restaurante);
+                await _restauranteRepository.Insert(restaurante);
             }
             catch (Exception ex)
             {
@@ -49,7 +55,7 @@ namespace BLL.Impl
             }
         }
 
-        public Task<List<RestauranteDTO>> GetRestaurantes()
+        public Task<List<ProdutoDTO>> GetRestaurantes()
         {
             throw new NotImplementedException();
         }

@@ -10,22 +10,15 @@ namespace BLL.Impl
 {
     public class PedidoService : AbstractValidator<PedidoDTO>, IPedidoService
     {
+        public async Task Insert(PedidoDTO pedido)
+        {
+            RuleFor(p => p.Quantidade).NotNull().LessThanOrEqualTo(0);
+            RuleFor(p => p.ValorTotal).NotNull();
+        }
+
         public async Task<List<PedidoDTO>> GetRestaurantes()
         {
             throw new NotImplementedException();
-        }
-
-        public async Task Insert(PedidoDTO pedido)
-        {
-            if (string.IsNullOrWhiteSpace(pedido.))
-            {
-                
-            }
-            else
-            {
-                pedido.Produto = pedido.Produto.Trim();
-
-            }
         }
     }
 }
