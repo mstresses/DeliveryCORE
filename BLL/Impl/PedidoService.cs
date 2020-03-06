@@ -19,8 +19,8 @@ namespace BLL.Impl
         {
             RuleFor(p => p.Quantidade).NotNull().WithMessage("A quantidade deve ser informada");
             RuleFor(p => p.ValorTotal).NotNull();
-            RuleFor(p => p.TaxaEntrega).NotNull();
-            RuleFor(p => p.FormaPagamento).NotNull();
+            RuleFor(p => p.TaxaEntrega).NotNull().WithMessage("A taa de entrega deve ser informada"); ;
+            RuleFor(p => p.FormaPagamento).NotNull().WithMessage("A forma de pagamento deve ser informada"); ;
             
         }
     }
