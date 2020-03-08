@@ -8,20 +8,12 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class ClienteRepository:IClienteRepository
+    public class ClienteRepository : IClienteRepository
     {
-        public async Task<ClienteDTO> Authenticate(string email, string senha)
+        private DeliveryContext _context;
+        public ClienteRepository(DeliveryContext context)
         {
-            using (var ctx = new DeliveryContext())
-            {
-                ClienteDTO user = await ctx.Clientes.FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
-                if (user == null)
-                {
-                    throw new Exception("Email e/ou senha inválidos");
-                }
-                return user;
-
-            }
+            this._context = context;
         }
 
         public async Task Insert(ClienteDTO cliente)
@@ -30,6 +22,27 @@ namespace DAO
             {
                 context.Clientes.Add(cliente);
                 await context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<ClienteDTO>> GetClientes()
+        {
+            using (var context = new DeliveryContext())
+            {
+                return await _context.Clientes.ToListAsync();
+            }
+        }
+
+        public async Task<ClienteDTO> Authenticate(string email, string senha)
+        {
+            using (var context = new DeliveryContext())
+            {
+                ClienteDTO user = await context.Clientes.FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
+                if (user == null)
+                {
+                    throw new Exception("Email e/ou senha inválidos");
+                }
+                return user;
             }
         }
     }

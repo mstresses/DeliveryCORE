@@ -7,9 +7,9 @@ using System.Text;
 
 namespace DAO.Mappings
 {
-    public class RestauranteMapConfig : IEntityTypeConfiguration<ProdutoDTO>
+    public class RestauranteMapConfig : IEntityTypeConfiguration<RestauranteDTO>
     {
-        public void Configure(EntityTypeBuilder<ProdutoDTO> builder)
+        public void Configure(EntityTypeBuilder<RestauranteDTO> builder)
         {
             builder.ToTable("RESTAURANTES");
 

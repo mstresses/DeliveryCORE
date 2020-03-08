@@ -35,11 +35,11 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(RestauranteInsertViewModel restauranteViewModel)
         {
-            await _restauranteService.Insert(new ProdutoDTO());
+            await _restauranteService.Insert(new RestauranteDTO());
 
             var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, ProdutoDTO>(); });
             IMapper mapper = configuration.CreateMapper();
-            ProdutoDTO restaurante = mapper.Map<ProdutoDTO>(restauranteViewModel);
+            RestauranteDTO restaurante = mapper.Map<RestauranteDTO>(restauranteViewModel);
 
             try
             {

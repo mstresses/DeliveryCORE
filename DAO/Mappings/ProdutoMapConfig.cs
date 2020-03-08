@@ -14,9 +14,10 @@ namespace DAO.Mappings
             builder.ToTable("PRODUTOS");
 
             builder.Property(p => p.Nome).IsRequired().HasMaxLength(60);
+
             builder.Property(p => p.Valor).IsRequired();
 
-            //TODO FK - RESTAURANTES
+            builder.HasOne(p => p.Restaurante);
         }
     }
 }

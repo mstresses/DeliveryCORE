@@ -12,11 +12,10 @@ namespace DAO
     {
         public DeliveryContext() : base()
         {
-
         }
 
         public DbSet<ClienteDTO> Clientes { get; set; }
-        public DbSet<ProdutoDTO> Restaurantes { get; set; }
+        public DbSet<RestauranteDTO> Restaurantes { get; set; }
         public DbSet<ProdutoDTO> Produtos { get; set; }
         public DbSet<PedidoDTO> Pedidos { get; set; }
 

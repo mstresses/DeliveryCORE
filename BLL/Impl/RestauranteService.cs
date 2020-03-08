@@ -6,6 +6,7 @@ using DAO;
 using DAO.Interfaces;
 using DTO;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class RestauranteService : AbstractValidator<ProdutoDTO>, IRestauranteService
+    public class RestauranteService : AbstractValidator<RestauranteDTO>, IRestauranteService
     {
         List<string> Erros = new List<string>();
         private IRestauranteRepository _restauranteRepository;
@@ -23,7 +24,7 @@ namespace BLL.Impl
             this._restauranteRepository = restauranteRepository;
         }
 
-        public async Task Insert(ProdutoDTO restaurante)
+        public async Task Insert(RestauranteDTO restaurante)
         {
             var resposta = restaurante.CNPJ.IsValidCNPJ();
             if (resposta != "") Erros.Add("CNPJ INVALIDO =" + resposta);
@@ -55,9 +56,12 @@ namespace BLL.Impl
             }
         }
 
-        public Task<List<ProdutoDTO>> GetRestaurantes()
+        public async Task<List<RestauranteDTO>> GetRestaurantes()
         {
-            throw new NotImplementedException();
+            using (var context = new DeliveryContext())
+            {
+                return await context.Restaurantes.ToListAsync();
+            }
         }
     }
 }

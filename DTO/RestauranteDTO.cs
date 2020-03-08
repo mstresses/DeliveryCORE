@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DTO
 {
-    public class ProdutoDTO
+    public class RestauranteDTO
     {
         public int ID { get; set; }
         public string NomeFantasia { get; set; }

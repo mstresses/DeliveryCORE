@@ -28,21 +28,21 @@ namespace DeliveryCORE
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RazorPagesMovieContext")));
+            //services.AddRazorPages();
+            //services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RazorPagesMovieContext")));
 
+            services.AddDbContextPool<DeliveryContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
             services.AddTransient<IClienteService, ClienteService>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
 
-            //services.AddTransient<IProdutoService, ProdutoService>();
-            //services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            services.AddTransient<IProdutoService, ProdutoService>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
-            //services.AddTransient<IPedidoService, PedidoService>();
-            //services.AddTransient<IPedidoRepository, PedidoRepository>();
+            services.AddTransient<IPedidoService, PedidoService>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
 
             services.AddTransient<IRestauranteService, RestauranteService>();
             services.AddTransient<IRestauranteRepository, RestauranteRepository>();
-            services.AddDbContextPool<DeliveryContext>(c => c.UseSqlServer(Configuration["ConnectionString"]));
 
             services.AddControllersWithViews();
         }

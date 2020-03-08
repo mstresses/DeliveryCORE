@@ -1,8 +1,10 @@
 ﻿using BLL.Interfaces;
 using Common;
+using DAO;
 using DAO.Interfaces;
 using DTO;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +21,7 @@ namespace BLL.Impl
         {
             this._produtoRepository = produtoRepository;
         }
+
         public async Task Insert(ProdutoDTO produto)
         {
             RuleFor(r => r.Nome).NotNull().WithMessage("O nome deve ser informado.");
@@ -45,9 +48,12 @@ namespace BLL.Impl
             }
         }
        
-        public Task<List<ProdutoDTO>> GetProdutos()
+        public async Task<List<ProdutoDTO>> GetProdutos()
         {
-            throw new NotImplementedException();
+            using (var context = new DeliveryContext())
+            {
+                return await context.Produtos.ToListAsync();
+            }
         }
     }
 }

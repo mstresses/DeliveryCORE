@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.Impl;
+using BLL.Interfaces;
 using DeliveryCORE.Models.Insert;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,13 @@ namespace DeliveryCORE.Controllers
 {
     public class ProdutoController : Controller
     {
-        public IActionResult Index()
+        private IProdutoService _produtoService;
+
+        public ProdutoController(IProdutoService produtoService)
         {
-            return View();
+            this._produtoService = produtoService;
         }
+
         [HttpGet]
         public IActionResult Cadastrar()
         {
@@ -29,16 +33,11 @@ namespace DeliveryCORE.Controllers
             IMapper mapper = configuration.CreateMapper();
             ProdutoDTO produto = mapper.Map<ProdutoDTO>(produtoViewModel);
 
-            ProdutoService svc = new ProdutoService();
             try
             {
-                await svc.(produto);
+                await _produtoService.Insert(produto);
                 return RedirectToAction("Index", "Produto");
             }
-            //catch (NecoException ex)
-            //{
-            //    ViewBag.Errors = ex.Errors;
-            //}
             catch (Exception ex)
             {
                 ViewBag.ErroGenerico = ex.Message;
@@ -46,6 +45,9 @@ namespace DeliveryCORE.Controllers
             return View();
         }
 
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

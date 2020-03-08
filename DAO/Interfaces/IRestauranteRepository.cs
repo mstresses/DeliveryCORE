@@ -8,8 +8,7 @@ namespace DAO.Interfaces
 {
     public interface IRestauranteRepository
     {
-        Task Insert(ProdutoDTO restaurante);
-
-        Task<List<ProdutoDTO>> GetRestaurantes();
+        Task Insert(RestauranteDTO restaurante);
+        Task<List<RestauranteDTO>> GetRestaurantes();
     }
 }

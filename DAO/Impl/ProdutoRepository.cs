@@ -10,6 +10,12 @@ namespace DAO
 {
     public class ProdutoRepository : IProdutoRepository
     {
+        private DeliveryContext _context;
+        public ProdutoRepository(DeliveryContext context)
+        {
+            this._context = context;
+        }
+
         public async Task Insert(ProdutoDTO produto)
         {
             using (var context = new DeliveryContext())

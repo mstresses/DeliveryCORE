@@ -16,17 +16,17 @@ namespace DAO
         {
             this._context = context;
         }
-
-        public async Task Insert(ProdutoDTO restaurante)
+        
+        public async Task Insert(RestauranteDTO restaurante)
         {
             using (var context = new DeliveryContext())
             {
                 this._context.Restaurantes.Add(restaurante);
                 await context.SaveChangesAsync();
             }
-        } 
+        }
 
-        public async Task<List<ProdutoDTO>> GetRestaurantes()
+        public async Task<List<RestauranteDTO>> GetRestaurantes()
         {
             using (var context = new DeliveryContext())
             {

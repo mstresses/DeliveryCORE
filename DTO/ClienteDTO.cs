@@ -13,6 +13,5 @@ namespace DTO
         public string Cpf { get; set; }
         public Endereco Endereco { get; set; }
         public string Senha { get; set; }
-
     }
 }

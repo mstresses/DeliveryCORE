@@ -43,7 +43,7 @@ namespace Common.Extensions
 			return cnpj.EndsWith(digito) ? "" : "CNPJ inválido";
 		}
 
-		public static bool IsCpf(string cpf)
+		public static string IsValidCPF(this string cpf)
 		{
 			int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 			int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -54,7 +54,7 @@ namespace Common.Extensions
 			cpf = cpf.Trim();
 			cpf = cpf.Replace(".", "").Replace("-", "");
 			if (cpf.Length != 11)
-				return false;
+				return "CPF deve conter 11 dígitos válidos";
 			tempCpf = cpf.Substring(0, 9);
 			soma = 0;
 
@@ -76,7 +76,7 @@ namespace Common.Extensions
 			else
 				resto = 11 - resto;
 			digito = digito + resto.ToString();
-			return cpf.EndsWith(digito);
+			return cpf.EndsWith(digito) ? "" : "CPF inválido";
 		}
 	}
 }

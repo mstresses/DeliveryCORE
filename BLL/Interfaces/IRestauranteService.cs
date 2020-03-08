@@ -8,8 +8,8 @@ namespace BLL.Interfaces
 {
     public interface IRestauranteService
     {
-        Task Insert(ProdutoDTO restaurante);
+        Task Insert(RestauranteDTO restaurante);
 
-        Task<List<ProdutoDTO>> GetRestaurantes();
+        Task<List<RestauranteDTO>> GetRestaurantes();
     }
 }
