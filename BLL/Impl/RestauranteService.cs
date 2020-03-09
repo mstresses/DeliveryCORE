@@ -58,10 +58,7 @@ namespace BLL.Impl
 
         public async Task<List<RestauranteDTO>> GetRestaurantes()
         {
-            using (var context = new DeliveryContext())
-            {
-                return await context.Restaurantes.ToListAsync();
-            }
+            return await _restauranteRepository.GetRestaurantes();
         }
     }
 }

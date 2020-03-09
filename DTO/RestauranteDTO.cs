@@ -11,7 +11,7 @@ namespace DTO
         public string NomeFantasia { get; set; }
         public string CNPJ { get; set; }
         public string Telefone { get; set; }
-        public Endereco Endereco { get; set; }
+        //public Endereco Endereco { get; set; }
         public string Categoria { get; set; }
     }
 }

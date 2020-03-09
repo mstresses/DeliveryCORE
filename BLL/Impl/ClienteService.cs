@@ -53,10 +53,7 @@ namespace BLL.Impl
 
         public async Task<List<ClienteDTO>> GetClientes()
         {
-            using (var context = new DeliveryContext())
-            {
-                return await context.Clientes.ToListAsync();
-            }
+            return await _clienteRepository.GetClientes();
         }
     }
 }

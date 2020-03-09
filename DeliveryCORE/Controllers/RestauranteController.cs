@@ -35,8 +35,6 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(RestauranteInsertViewModel restauranteViewModel)
         {
-            await _restauranteService.Insert(new RestauranteDTO());
-
             var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, ProdutoDTO>(); });
             IMapper mapper = configuration.CreateMapper();
             RestauranteDTO restaurante = mapper.Map<RestauranteDTO>(restauranteViewModel);
@@ -53,7 +51,7 @@ namespace DeliveryCORE.Controllers
             return View();
         }
 
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public IActionResult PesquisaCEP(string cep)
         {
             cep = cep.Replace("-", "");
@@ -65,7 +63,7 @@ namespace DeliveryCORE.Controllers
                 UF = cepSvc.UF,
                 Cidade = cepSvc.Cidade
             };
-            return Json(obj, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+            return Json(obj);
         }
     }
 }

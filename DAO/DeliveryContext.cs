@@ -10,7 +10,8 @@ namespace DAO
 {
     public class DeliveryContext : DbContext
     {
-        public DeliveryContext() : base()
+      
+        public DeliveryContext(DbContextOptions<DeliveryContext> aaaa):base(aaaa)
         {
         }
 

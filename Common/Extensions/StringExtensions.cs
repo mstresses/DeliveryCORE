@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.WebPages.Html;
 
 namespace Common.Extensions
 {
@@ -77,6 +78,11 @@ namespace Common.Extensions
 				resto = 11 - resto;
 			digito = digito + resto.ToString();
 			return cpf.EndsWith(digito) ? "" : "CPF inválido";
+		}
+
+		public static string FormatDate(this HtmlHelper helper, DateTime? date)
+		{
+			return date.Value.ToString("dd/MM/yyyy");
 		}
 	}
 }

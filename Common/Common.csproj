@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.6.2" />
+    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.7" />
   </ItemGroup>
 
 </Project>

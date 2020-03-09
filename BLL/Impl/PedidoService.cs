@@ -48,10 +48,7 @@ namespace BLL.Impl
 
         public async Task<List<PedidoDTO>> GetPedidos()
         {
-            using (var context = new DeliveryContext())
-            {
-                return await context.Pedidos.ToListAsync();
-            }
+            return await _pedidoRepository.GetPedidos();
         }
     }
 }

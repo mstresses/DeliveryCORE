@@ -13,23 +13,19 @@ namespace DeliveryCORE.Controllers
 {
     public class ClienteController:Controller
     {
-
         private IClienteService _clienteService;
-
         public ClienteController(IClienteService clienteService)
         {
             this._clienteService = clienteService;
         }
         
         [HttpGet]
-
         public IActionResult Cadastrar()
         {
             return View();
         }
 
         [HttpPost]
-
         public async Task<IActionResult> Cadastrar(ClienteInsertViewModel clienteViewModel)
         {
             var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteInsertViewModel, ClienteDTO>(); });
@@ -39,7 +35,7 @@ namespace DeliveryCORE.Controllers
             try
             {
                 await _clienteService.Insert(cliente);
-                return RedirectToAction("Index", "Pedido");
+                return RedirectToAction("Index", "Cliente");
             }
 
             catch (Exception ex)
@@ -55,8 +51,4 @@ namespace DeliveryCORE.Controllers
         }
 
     }
-
-
-
 }
-    }
