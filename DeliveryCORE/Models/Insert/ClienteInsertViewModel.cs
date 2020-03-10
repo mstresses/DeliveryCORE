@@ -11,7 +11,7 @@ namespace DeliveryCORE.Models.Insert
     public class ClienteInsertViewModel
     {
         [DisplayName("Nome"), Required(ErrorMessage = "O nome deve ser informado")]
-        [StringLength(maximumLength: 100, MinimumLength = 3, ErrorMessage = "O nome deve conter 3 e 100 caracteres")]
+        [StringLength(maximumLength: 100, MinimumLength = 3, ErrorMessage = "O nome deve conter de 3 e 100 caracteres")]
         public string Nome { get; set; }
 
 
