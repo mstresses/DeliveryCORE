@@ -52,12 +52,14 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section scripts{
 
+@section scripts{
     <script type="text/javascript">
+
         $(document).ready(function () {
             var cpfMask = $("#Cpf");
-            cpfMask.mask('000.000.000-00', { reverse = false });
-        }
+            cpfMask.mask('000.000.000-00', { reverse: false });
+        });
+
     </script>
- }
+}
