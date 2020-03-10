@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class RestauranteService : AbstractValidator<RestauranteDTO>, IRestauranteService
+    public class RestauranteService : RestauranteValidator, IRestauranteService
     {
         List<string> Erros = new List<string>();
         private IRestauranteRepository _restauranteRepository;
@@ -29,15 +29,7 @@ namespace BLL.Impl
             var resposta = restaurante.CNPJ.IsValidCNPJ();
             if (resposta != "") Erros.Add("CNPJ INVALIDO =" + resposta);
 
-            RuleFor(r => r.NomeFantasia).NotNull().WithMessage("O nome deve ser informado.");
-            RuleFor(r => r.NomeFantasia).MaximumLength(60).WithMessage("O nome deve ter no máximo 60 caracteres.");
-
-            RuleFor(r => r.CNPJ).NotNull().WithMessage("O CNPJ deve ser informado.");
-            RuleFor(r => r.CNPJ).Length(18);
-
-            RuleFor(r => r.Telefone).NotNull().WithMessage("O telefone deve ser informado.");
-
-            RuleFor(r => r.Categoria).NotNull().WithMessage("A categoria deve ser informada.");
+           
 
             try
             {

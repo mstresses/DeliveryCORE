@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BLL.Validators
 {
-    internal class ClienteValidator : AbstractValidator<ClienteDTO>
+    public class ClienteValidator : AbstractValidator<ClienteDTO>
     {
         public ClienteValidator()
         {

@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using BLL.Validators;
 using Common;
 using DAO;
 using DAO.Interfaces;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class PedidoService : AbstractValidator<PedidoDTO>, IPedidoService
+    public class PedidoService : PedidoValidator, IPedidoService
     {
         List<string> Erros = new List<string>();
         private IPedidoRepository _pedidoRepository;
@@ -25,11 +26,7 @@ namespace BLL.Impl
 
         public async Task Insert(PedidoDTO pedido)
         {
-            RuleFor(p => p.Produto).NotNull().WithMessage("Pedido vazio.");
-            RuleFor(p => p.Quantidade).NotNull().LessThanOrEqualTo(0).WithMessage("A quantidade deve ser informada");
-            RuleFor(p => p.ValorTotal).NotNull().LessThanOrEqualTo(0);
-            RuleFor(p => p.TaxaEntrega).NotNull().WithMessage("A taxa de entrega deve ser informada"); ;
-            RuleFor(p => p.FormaPagamento).NotNull().WithMessage("A forma de pagamento deve ser informada"); ;
+            
 
             try
             {

@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using BLL.Validators;
 using Common;
 using DAO;
 using DAO.Interfaces;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class ProdutoService : AbstractValidator<ProdutoDTO>, IProdutoService
+    public class ProdutoService : ProdutoValidator, IProdutoService
     {
         private IProdutoRepository _produtoRepository;
 
@@ -24,12 +25,7 @@ namespace BLL.Impl
 
         public async Task Insert(ProdutoDTO produto)
         {
-            RuleFor(r => r.Nome).NotNull().WithMessage("O nome deve ser informado.");
-            RuleFor(r => r.Nome).MaximumLength(60).WithMessage("O nome deve ter no máximo 30 caracteres.");
-
-            RuleFor(r => r.Restaurante).NotNull().WithMessage("O restaurante deve ser informado.");
-
-            RuleFor(r => r.Valor).NotNull().WithMessage("O Valor deve ser informado.");
+           
 
             try
             {
