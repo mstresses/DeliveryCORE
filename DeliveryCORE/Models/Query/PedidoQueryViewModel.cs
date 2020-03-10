@@ -9,7 +9,6 @@ namespace DeliveryCORE.Models.Query
 {
     public class PedidoQueryViewModel
     {
-        public int ID { get; set; }
         public RestauranteDTO Restaurante { get; set; }
         public ProdutoDTO Produto { get; set; }
         public double Quantidade { get; set; }

@@ -14,22 +14,18 @@ namespace DeliveryCORE.Controllers
     public class PedidoController : Controller
     {
         private IPedidoService _pedidoService;
-
         public PedidoController(IPedidoService pedidoService)
         {
             this._pedidoService = pedidoService;
         }
 
         [HttpGet]
-
         public IActionResult Cadastrar()
         {
             return View();
         }
 
         [HttpPost]
-
-
         public async Task<IActionResult> Cadastrar(PedidoInsertViewModel pedidoViewModel)
         {
             var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<PedidoInsertViewModel, PedidoDTO>(); });
@@ -53,7 +49,5 @@ namespace DeliveryCORE.Controllers
         {
             return View();
         }
-
-
     }
 }

@@ -8,7 +8,6 @@ namespace DeliveryCORE.Models
 {
     public class RestauranteInsertViewModel
     {
-        public int ID { get; set; }
         public string NomeFantasia { get; set; }
         public string CNPJ { get; set; }
         public string Telefone { get; set; }

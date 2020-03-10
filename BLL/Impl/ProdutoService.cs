@@ -50,10 +50,7 @@ namespace BLL.Impl
        
         public async Task<List<ProdutoDTO>> GetProdutos()
         {
-            using (var context = new DeliveryContext())
-            {
-                return await context.Produtos.ToListAsync();
-            }
+            return await _produtoRepository.GetProdutos();
         }
     }
 }

@@ -14,7 +14,6 @@ namespace DeliveryCORE.Controllers
     public class ProdutoController : Controller
     {
         private IProdutoService _produtoService;
-
         public ProdutoController(IProdutoService produtoService)
         {
             this._produtoService = produtoService;
