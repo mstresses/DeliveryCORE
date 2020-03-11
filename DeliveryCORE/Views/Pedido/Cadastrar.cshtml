@@ -4,34 +4,74 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1>Cadastrar</h1>
+<h1>Faça seu pedido!</h1>
 
-<h4>PedidoInsertViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Cadastrar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Restaurante" class="control-label">Selecione um Restaurante</label>
+                <select class="form-control" id="Restaurante" name="Restaurante" asp-for="Restaurante">
+                    @foreach (var item in ViewBag.Restaurantes)
+                    {
+                        <option value="@item.ID">@item.Nome</option>
+                    }
+                </select>
+                <span asp-validation-for="Restaurante" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
+                    <label asp-for="Produto.Restaurante" class="control-label">Selecione um Produto</label>
+                    <select class="form-control" id="Produto.Restaurante" name="Produto.Restaurante" asp-for="Produto.Restaurante">
+                        @foreach (var item in ViewBag.Produtos)
+                        {
+                            <option value="@item.ID">@item.Nome</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Produto.Restaurante" class="text-danger"></span>
+                </div>*@
+
             <div class="form-group">
                 <label asp-for="Quantidade" class="control-label"></label>
                 <input asp-for="Quantidade" class="form-control" />
                 <span asp-validation-for="Quantidade" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Quantidade" class="control-label"></label>
+                <input asp-for="Quantidade" class="form-control" />
+                <span asp-validation-for="Quantidade" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="ValorTotal" class="control-label"></label>
                 <input asp-for="ValorTotal" class="form-control" />
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
+
+            @{
+                string[] formaPagamento = Enum.GetNames(typeof(DTO.Enums.FormaPagamento));
+            }
+            <div class="form-group">
+                <label asp-for="FormaPagamento" class="control-label"></label>
+                <select class="form-control" id="FormaPagamento" name="FormaPagamento" asp-for="FormaPagamento">
+                    @for (int i = 0; i < formaPagamento.Length; i++)
+                    {
+                        <option value="@i">@formaPagamento[i]</option>
+                    }
+                </select>
+                <span asp-validation-for="FormaPagamento" class="text-danger"></span>
+            </div>
+
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="TaxaEntrega" /> @Html.DisplayNameFor(model => model.TaxaEntrega)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="FormaPagamento" class="control-label"></label>
-                <input asp-for="FormaPagamento" class="form-control" />
-                <span asp-validation-for="FormaPagamento" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -40,6 +80,38 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retornar para o Índice</a>
 </div>
 
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Restaurante").change(function () {
+                var id = $("#Restaurante").val();
+
+                $.ajax({
+                    url: '\Produto\GetProdutosRestaurante',
+                    type: 'GET',
+                    data: { idRestaurante: id },
+                    success: function (result) {
+                        //Fazer quanto a parte do backend estiver pronta
+                        $.each(result, function () {
+                            $("#Restaurante").append("<option />").val(this.ID).text(this.Nome);
+                        });
+                    },
+                    error: function (result) {
+                        alert('Erro na comunicação com o servidor');
+                    }
+                });
+            });
+
+        });
+
+
+    </script>
+
+}

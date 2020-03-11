@@ -10,5 +10,6 @@ namespace DAO.Interfaces
     {
         Task Insert(ProdutoDTO produto);
         Task<List<ProdutoDTO>> GetProdutos();
+        Task<List<ProdutoDTO>> GetProdutosByRestaurant(int id);
     }
 }

@@ -11,5 +11,7 @@ namespace BLL.Interfaces
         Task Insert(RestauranteDTO restaurante);
 
         Task<List<RestauranteDTO>> GetRestaurantes();
+
     }
+
 }

@@ -17,7 +17,7 @@ namespace DAO.Mappings
 
             builder.Property(p => p.Valor).IsRequired();
 
-            builder.HasOne(p => p.Restaurante);
+            builder.HasOne(p => p.Restaurante).WithMany(c => c.Produtos).HasForeignKey(c => c.RestauranteID);
         }
     }
 }

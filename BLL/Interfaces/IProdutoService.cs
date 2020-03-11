@@ -10,5 +10,6 @@ namespace BLL.Interfaces
     {
         Task Insert(ProdutoDTO produto);
         Task<List<ProdutoDTO>> GetProdutos();
+        Task<List<ProdutoDTO>> GetProductsByRestaurant(int id);
     }
 }

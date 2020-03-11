@@ -22,7 +22,6 @@ namespace DeliveryCORE.Models.Insert
         public string Email { get; set; }
 
         [DisplayName("Telefone"), Required(ErrorMessage = "O telefone deve ser informado")]
-        [StringLength(maximumLength: 11, MinimumLength = 10, ErrorMessage = "O telefone deve conter no minimo 10 caracteres")]
         public string Telefone { get; set; }
 
         [DisplayName("Cpf"), Required(ErrorMessage = "O CPF deve ser informado")]

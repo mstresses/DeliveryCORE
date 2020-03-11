@@ -31,7 +31,7 @@ namespace DeliveryCORE
             //services.AddRazorPages();
             //services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RazorPagesMovieContext")));
 
-            services.AddDbContextPool<DeliveryContext>(c => c.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=DeliveryDB;Integrated Security=True;Connect Timeout=30"));
+            services.AddDbContextPool<DeliveryContext>(c => c.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=DeliveryCore2;Integrated Security=True;Connect Timeout=30"));
             
             services.AddTransient<IClienteService, ClienteService>();
             services.AddTransient<IClienteRepository, ClienteRepository>();

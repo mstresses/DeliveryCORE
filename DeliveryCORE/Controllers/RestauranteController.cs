@@ -7,6 +7,7 @@ using BLL.Impl;
 using BLL.Interfaces;
 using BLL.Remote;
 using DeliveryCORE.Models;
+using DeliveryCORE.Models.Query;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,8 +22,17 @@ namespace DeliveryCORE.Controllers
             this._restauranteService = restauranteService;
         }
 
-        public IActionResult Index()
+      
+
+        public async Task<IActionResult> Index()
         {
+            List<RestauranteDTO> restaurantes = await _restauranteService.GetRestaurantes();
+
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteDTO, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(s=> s.NomeFantasia));});
+            IMapper mapper = configuration.CreateMapper();
+            List<RestauranteSimpleResultSet> restaurantesViewModel = mapper.Map<List<RestauranteSimpleResultSet>>(restaurantes);
+
+            ViewBag.Restaurantes = restaurantesViewModel;
             return View();
         }
 
@@ -35,7 +45,7 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(RestauranteInsertViewModel restauranteViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, ProdutoDTO>(); });
+            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, RestauranteDTO>(); });
             IMapper mapper = configuration.CreateMapper();
             RestauranteDTO restaurante = mapper.Map<RestauranteDTO>(restauranteViewModel);
 

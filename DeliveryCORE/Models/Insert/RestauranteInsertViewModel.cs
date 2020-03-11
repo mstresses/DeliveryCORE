@@ -19,7 +19,6 @@ namespace DeliveryCORE.Models
         public string CNPJ { get; set; }
 
         [DisplayName("Telefone"), Required(ErrorMessage = "O telefone deve ser informado")]
-        [StringLength(maximumLength: 11, MinimumLength = 10, ErrorMessage = "O telefone deve conter no minimo 10 caracteres")]
         public string Telefone { get; set; }
 
         //public Endereco Endereco { get; set; }

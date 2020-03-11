@@ -43,3 +43,23 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var cnpjMask = $("#CNPJ");
+            cnpjMask.mask('99.999.999/9999-99', { reverse: false });
+
+            var telefoneMask = $("#Telefone");
+            telefoneMask.mask('(00) 00000-0009');
+            telefoneMask.blur(function (event) {
+                if ($(this).val().length == 15) {
+                    telefoneMask.mask('(00) 00000-0009');
+                }
+                else {
+                    telefoneMask.mask('(00) 0000-00009');
+                }
+            });
+        });
+    </script>
+}

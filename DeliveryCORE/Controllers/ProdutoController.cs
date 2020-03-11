@@ -48,5 +48,13 @@ namespace DeliveryCORE.Controllers
         {
             return View();
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetProdutosRestaurante(int idRestaurante)
+        {
+            List<ProdutoDTO> produtos = await _produtoService.GetProductsByRestaurant(idRestaurante);
+            return Json(produtos);
+        }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAO.Migrations
 {
     [DbContext(typeof(DeliveryContext))]
-    [Migration("20200309191731_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200311191849_InitialDatabase")]
+    partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,26 +29,45 @@ namespace DAO.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(14)")
+                        .HasMaxLength(14);
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
 
                     b.Property<string>("Senha")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(12)")
+                        .HasMaxLength(12);
 
                     b.HasKey("ID");
 
-                    b.ToTable("Clientes");
+                    b.HasIndex("Cpf")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("Telefone")
+                        .IsUnique();
+
+                    b.ToTable("CLIENTES");
                 });
 
             modelBuilder.Entity("DTO.PedidoDTO", b =>
@@ -82,7 +101,7 @@ namespace DAO.Migrations
 
                     b.HasIndex("RestauranteID");
 
-                    b.ToTable("Pedidos");
+                    b.ToTable("PEDIDOS");
                 });
 
             modelBuilder.Entity("DTO.ProdutoDTO", b =>
@@ -93,7 +112,9 @@ namespace DAO.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
 
                     b.Property<int?>("RestauranteID")
                         .HasColumnType("int");
@@ -105,7 +126,7 @@ namespace DAO.Migrations
 
                     b.HasIndex("RestauranteID");
 
-                    b.ToTable("Produtos");
+                    b.ToTable("PRODUTOS");
                 });
 
             modelBuilder.Entity("DTO.RestauranteDTO", b =>
@@ -116,20 +137,59 @@ namespace DAO.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CNPJ")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(18)")
+                        .HasMaxLength(18);
 
                     b.Property<string>("Categoria")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeFantasia")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
 
                     b.Property<string>("Telefone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Restaurantes");
+                    b.HasIndex("CNPJ")
+                        .IsUnique();
+
+                    b.ToTable("RESTAURANTES");
+                });
+
+            modelBuilder.Entity("DTO.UsuarioDTO", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
+
+                    b.Property<string>("Senha")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasName("UQ_USUARIO_EMAIL")
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.ToTable("USUARIOS");
                 });
 
             modelBuilder.Entity("DTO.PedidoDTO", b =>

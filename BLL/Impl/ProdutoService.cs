@@ -46,5 +46,10 @@ namespace BLL.Impl
         {
             return await _produtoRepository.GetProdutos();
         }
+
+        public async Task<List<ProdutoDTO>> GetProductsByRestaurant(int id)
+        {
+            return await _produtoRepository.GetProdutosByRestaurant(id);
+        }
     }
 }

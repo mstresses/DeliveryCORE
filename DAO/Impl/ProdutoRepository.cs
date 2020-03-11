@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace DAO
 {
@@ -25,6 +26,11 @@ namespace DAO
         public async Task<List<ProdutoDTO>> GetProdutos()
         {
             return await _context.Produtos.ToListAsync();
+        }
+
+        public async Task<List<ProdutoDTO>> GetProdutosByRestaurant(int id)
+        {
+            return await _context.Produtos.Where(c => c.Restaurante.ID == id).ToListAsync();
         }
     }
 }

@@ -46,9 +46,10 @@ namespace BLL.Impl
             }
         }
 
-        public async Task<List<RestauranteDTO>> GetRestaurantes()
+        Task<List<RestauranteDTO>> IRestauranteService.GetRestaurantes()
         {
-            return await _restauranteRepository.GetRestaurantes();
+            return _restauranteRepository.GetRestaurantes();
+
         }
     }
 }

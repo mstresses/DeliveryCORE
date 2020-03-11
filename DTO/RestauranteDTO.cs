@@ -13,5 +13,6 @@ namespace DTO
         public string Telefone { get; set; }
         //public Endereco Endereco { get; set; }
         public string Categoria { get; set; }
+        public virtual ICollection<ProdutoDTO> Produtos { get; set; }
     }
 }
