@@ -16,7 +16,6 @@ namespace BLL.Impl
 {
     public class RestauranteService : RestauranteValidator, IRestauranteService
     {
-        List<string> Erros = new List<string>();
         private IRestauranteRepository _restauranteRepository;
 
         public RestauranteService(IRestauranteRepository restauranteRepository)
@@ -26,23 +25,22 @@ namespace BLL.Impl
 
         public async Task Insert(RestauranteDTO restaurante)
         {
-            var resposta = restaurante.CNPJ.IsValidCNPJ();
-            if (resposta != "") Erros.Add("CNPJ INVALIDO =" + resposta);
-
-           
-
             try
             {
                 await _restauranteRepository.Insert(restaurante);
             }
             catch (Exception ex)
             {
+                List<Error> error = new List<Error>();
                 if (ex.InnerException != null && ex.InnerException.InnerException.Message.Contains("UQ"))
                 {
-                    List<Error> error = new List<Error>();
                     error.Add(new Error() { FieldName = "CNPJ", Message = "CNPJ já cadastrado" });
                     throw new Exception();
                 }
+
+                var resposta = restaurante.CNPJ.IsValidCNPJ();
+                if (resposta != "") error.Add(new Error() { FieldName = "CNPJ", Message = "CNPJ INVÁLIDO =" + resposta });
+
                 File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
                 throw new Exception("Erro no banco de dados, contate o administrador.");
             }

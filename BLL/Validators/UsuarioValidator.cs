@@ -8,23 +8,21 @@ using System.Text;
 
 namespace BLL.Validators
 {
-    public class ClienteValidator : AbstractValidator<ClienteDTO>
+    public class UsuarioValidator : AbstractValidator<UsuarioDTO>
     {
-        public ClienteValidator()
+        public UsuarioValidator()
         {
             List<Error> error = new List<Error>();
 
-            RuleFor(c => c.Nome).NotNull().WithMessage("O nome deve ser informado.");
+            RuleFor(u => u.Nome).NotNull().WithMessage("O nome deve ser informado.");
             error.Add(new Error() { FieldName = "Nome", Message = "Problema com o nome, verifique." });
 
-            RuleFor(c => c.Email).NotNull().EmailAddress().WithMessage("O email deve ser informado.");
+            RuleFor(u => u.Email).NotNull().EmailAddress().WithMessage("O email deve ser informado.");
             error.Add(new Error() { FieldName = "Email", Message = "Problema com o Email, verifique." });
 
-            RuleFor(c => c.Telefone).NotNull().WithMessage("O telefone deve ser informado.");
-            error.Add(new Error() { FieldName = "Telefone", Message = "Problema com o Telefone, verifique." });
-
-            RuleFor(c => c.Cpf).NotNull().WithMessage("O CPF deve ser informado.");
-            error.Add(new Error() { FieldName = "Cpf", Message = "Problema com o Cpf, verifique." });
+            RuleFor(u => u.Senha).NotNull().WithMessage("O CPF deve ser informado.");
+            error.Add(new Error() { FieldName = "Senha", Message = "Problema com a Senha, verifique." });
+            
             //if (error.Count > 0)
             //{
             //    File.WriteAllText("log.txt", error.ToString());

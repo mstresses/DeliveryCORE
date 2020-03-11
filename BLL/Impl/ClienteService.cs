@@ -17,7 +17,6 @@ namespace BLL.Impl
 {
     public class ClienteService : ClienteValidator, IClienteService
     {
-        List<string> Erros = new List<string>();
         private IClienteRepository _clienteRepository;
 
         public ClienteService(IClienteRepository clienteRepository)
@@ -27,23 +26,24 @@ namespace BLL.Impl
 
         public async Task Insert(ClienteDTO cliente)
         {
-            var resposta = cliente.Cpf.IsValidCPF();
-            if (resposta != "") Erros.Add("CPF INVALIDO =" + resposta);
-
             
-
             try
             {
                 await _clienteRepository.Insert(cliente);
             }
             catch (Exception ex)
             {
+                List<Error> error = new List<Error>();
+
                 if (ex.InnerException != null && ex.InnerException.InnerException.Message.Contains("UQ"))
                 {
-                    List<Error> error = new List<Error>();
                     error.Add(new Error() { FieldName = "CPF", Message = "CPF já cadastrado" });
                     throw new Exception();
                 }
+
+                var resposta = cliente.Cpf.IsValidCPF();
+                if (resposta != "") error.Add(new Error() { FieldName = "CPF", Message = "CPF INVÁLIDO =" + resposta });
+
                 File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
                 throw new Exception("Erro no banco de dados, contate o administrador.");
             }

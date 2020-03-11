@@ -16,8 +16,7 @@ namespace Common
             this.Errors = errors;
         }
 
-        //Daqui pra baixo é apenas código que o proprio VS gera 
-        //pra gente poder utilizar esta exceção 
+        //Daqui pra baixo é apenas código que o proprio VS gera pra gente poder utilizar esta exceção 
         public DeliveryException(string message) : base(message) { }
         public DeliveryException(string message, Exception inner) : base(message, inner) { }
         protected DeliveryException(

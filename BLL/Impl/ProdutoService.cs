@@ -25,8 +25,6 @@ namespace BLL.Impl
 
         public async Task Insert(ProdutoDTO produto)
         {
-           
-
             try
             {
                 await _produtoRepository.Insert(produto);
@@ -36,7 +34,7 @@ namespace BLL.Impl
                 if (ex.InnerException != null && ex.InnerException.InnerException.Message.Contains("UQ"))
                 {
                     List<Error> error = new List<Error>();
-                    error.Add(new Error() { FieldName = "CNPJ", Message = "CNPJ já cadastrado" });
+                    error.Add(new Error() { FieldName = "Produto", Message = "Produto já cadastrado" });
                     throw new Exception();
                 }
                 File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);

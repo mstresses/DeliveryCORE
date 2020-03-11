@@ -10,7 +10,6 @@ namespace DAO
 {
     public class DeliveryContext : DbContext
     {
-      
         public DeliveryContext(DbContextOptions<DeliveryContext> aaaa):base(aaaa)
         {
         }
@@ -19,6 +18,7 @@ namespace DAO
         public DbSet<RestauranteDTO> Restaurantes { get; set; }
         public DbSet<ProdutoDTO> Produtos { get; set; }
         public DbSet<PedidoDTO> Pedidos { get; set; }
+        public DbSet<UsuarioDTO> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace DeliveryCORE.Controllers
 {
-    public class ClienteController:Controller
+    public class ClienteController : Controller
     {
         private IClienteService _clienteService;
         public ClienteController(IClienteService clienteService)
         {
             this._clienteService = clienteService;
         }
-        
+
         [HttpGet]
         public IActionResult Cadastrar()
         {
@@ -49,8 +49,5 @@ namespace DeliveryCORE.Controllers
         {
             return View();
         }
-
-
-
+    }
 }
-    
