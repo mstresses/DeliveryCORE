@@ -3,54 +3,54 @@
 @{
     ViewData["Title"] = "Cadastrar";
 }
-
+<img src="~/img/dishes_1.jpg" width="600" height="400" alt="Alternate Text" />
 <h1 style="margin-top: 70px; padding-top: 70px;">Cadastro de Cliente</h1>
 
-<hr />
 
 @*<img src="~/img/dishes_1.jpg" width="600" height="400" alt="Alternate Text" />*@
+
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Cadastrar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+
             <div class="form-group">
                 <label asp-for="Nome" class="control-label">Nome</label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
                 <input asp-for="DataNascimento" type="date" class="form-control" />
                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Email" class="control-label">Email</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Telefone" class="control-label">Telefone</label>
                 <input asp-for="Telefone" class="form-control" />
                 <span asp-validation-for="Telefone" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Cpf" class="control-label">CPF</label>
                 <input asp-for="Cpf" class="form-control" />
                 <span asp-validation-for="Cpf" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Senha" class="control-label">Senha</label>
                 <input asp-for="Senha" type="password" class="form-control" />
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <input type="submit" value="Cadastrar" class="btn btn-primary" />
             </div>
@@ -73,7 +73,7 @@
             var telefoneMask = $("#Telefone");
             telefoneMask.mask('(00) 00000-0009');
             telefoneMask.blur(function (event) {
-                if ($(this).val().length == 15) { 
+                if ($(this).val().length == 15) {
                     telefoneMask.mask('(00) 00000-0009');
                 }
                 else {
