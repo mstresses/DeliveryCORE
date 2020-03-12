@@ -114,7 +114,7 @@ namespace DAO.Migrations
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
 
-                    b.Property<int?>("RestauranteID")
+                    b.Property<int>("RestauranteID")
                         .HasColumnType("int");
 
                     b.Property<double>("Valor")
@@ -204,8 +204,10 @@ namespace DAO.Migrations
             modelBuilder.Entity("DTO.ProdutoDTO", b =>
                 {
                     b.HasOne("DTO.RestauranteDTO", "Restaurante")
-                        .WithMany()
-                        .HasForeignKey("RestauranteID");
+                        .WithMany("Produtos")
+                        .HasForeignKey("RestauranteID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAO.Migrations
 {
-    public partial class InitialDatabase : Migration
+    public partial class DeliveryCore : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,7 +62,7 @@ namespace DAO.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RestauranteID = table.Column<int>(nullable: true),
+                    RestauranteID = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(maxLength: 60, nullable: false),
                     Valor = table.Column<double>(nullable: false)
                 },
@@ -74,7 +74,7 @@ namespace DAO.Migrations
                         column: x => x.RestauranteID,
                         principalTable: "RESTAURANTES",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

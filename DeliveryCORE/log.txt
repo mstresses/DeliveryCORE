@@ -1,5 +1,5 @@
-Cannot open database "DeliveryCore2" requested by the login. The login failed.
-Login failed for user 'LAPTOP-08RJ72J6\mstre'. -    at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, SqlAuthenticationProviderManager sqlAuthProviderManager)
+Cannot open database "DeliveryCore" requested by the login. The login failed.
+Login failed for user 'TREINA\900192'. -    at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, SqlAuthenticationProviderManager sqlAuthProviderManager)
    at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
    at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
    at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
@@ -18,5 +18,5 @@ Login failed for user 'LAPTOP-08RJ72J6\mstre'. -    at Microsoft.Data.SqlClient.
    at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
    at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
-   at DAO.ClienteRepository.Insert(ClienteDTO cliente) in C:\Users\mstre\Source\Repos\DeliveryCORE\DAO\Impl\ClienteRepository.cs:line 22
-   at BLL.Impl.ClienteService.Insert(ClienteDTO cliente) in C:\Users\mstre\Source\Repos\DeliveryCORE\BLL\Impl\ClienteService.cs:line 32
+   at DAO.ClienteRepository.Insert(ClienteDTO cliente) in C:\Users\900192\Source\Repos\DeliveryCORE\DAO\Impl\ClienteRepository.cs:line 22
+   at BLL.Impl.ClienteService.Insert(ClienteDTO cliente) in C:\Users\900192\Source\Repos\DeliveryCORE\BLL\Impl\ClienteService.cs:line 32
