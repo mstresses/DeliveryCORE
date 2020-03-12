@@ -4,32 +4,28 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1 style="margin-top: 70px; padding-top: 70px;">Cadastre seu restaurante!</h1>
+<h1 style="margin-top: 60px; padding-top: 60px;">Cadastre seu restaurante!</h1>
 
 <hr />
-<a 
-<span class="html-attribute-name">href</span>
-<a class="html-attribute-value html-external-link" target="_blank" href="/lista-restaurantes" rel="noreferrer noopener">/lista-restaurantes</a>
-</span>
-<a href="/lista-restaurantes"><figure class="highlights-carousel__figure">
+
 <div class="row">
     <div class="col-md-4">
 
         <form asp-action="Cadastrar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+
             <div class="form-group">
                 <label asp-for="NomeFantasia" class="control-label"></label>
                 <input asp-for="NomeFantasia" class="form-control" />
                 <span asp-validation-for="NomeFantasia" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="CNPJ" class="control-label"></label>
                 <input asp-for="CNPJ" class="form-control" />
                 <span asp-validation-for="CNPJ" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Telefone" class="control-label"></label>
                 <input asp-for="Telefone" class="form-control" />
