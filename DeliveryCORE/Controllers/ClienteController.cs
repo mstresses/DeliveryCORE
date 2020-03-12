@@ -46,6 +46,7 @@ namespace DeliveryCORE.Controllers
 
             return View();
         }
+
         public async Task<IActionResult> Index()
         {
             List<ClienteDTO> clientes = await _clienteService.GetClientes();
