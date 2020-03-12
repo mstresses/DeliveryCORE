@@ -17,10 +17,11 @@ namespace DeliveryCORE.Controllers
         private IPedidoService _pedidoService;
         private IRestauranteService _restauranteService;
         private IProdutoService _produtoService;
-        public PedidoController(IPedidoService pedidoService,IRestauranteService restauranteService)
+        public PedidoController(IPedidoService pedidoService,IRestauranteService restauranteService,IProdutoService produtoService)
         {
             this._pedidoService = pedidoService;
             this._restauranteService = restauranteService;
+            this._produtoService = produtoService;
         }
 
         [HttpGet]

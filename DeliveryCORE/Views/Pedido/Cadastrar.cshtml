@@ -35,19 +35,13 @@
                 </div>*@
 
             <div class="form-group">
-                <label asp-for="Quantidade" class="control-label"></label>
-                <input asp-for="Quantidade" class="form-control" />
+                <label asp-for="Quantidade" class="control-label">Informe a quantidade</label>
+                <input asp-for="Quantidade" type="number" class="form-control" />
                 <span asp-validation-for="Quantidade" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Quantidade" class="control-label"></label>
-                <input asp-for="Quantidade" class="form-control" />
-                <span asp-validation-for="Quantidade" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ValorTotal" class="control-label"></label>
+                <label asp-for="ValorTotal" class="control-label">Valor Total</label>
                 <input asp-for="ValorTotal" class="form-control" />
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>

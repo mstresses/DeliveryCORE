@@ -3,5 +3,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Clientes Cadastrados</h1>
 
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Cpf</th>
+        <th>Email</th>
+        <th>Telefone</th>
+    </tr>
+
+    @foreach (var item in ViewBag.Clientes)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Nome</td>
+            <td>@item.Cpf</td>
+            <td>@item.Email</td>
+            <td>@item.Telefone</td>
+        </tr>
+    }
+</table>

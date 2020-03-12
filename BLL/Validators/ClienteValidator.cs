@@ -25,6 +25,7 @@ namespace BLL.Validators
 
             RuleFor(c => c.Cpf).NotNull().WithMessage("O CPF deve ser informado.");
             error.Add(new Error() { FieldName = "Cpf", Message = "Problema com o Cpf, verifique." });
+
             //if (error.Count > 0)
             //{
             //    File.WriteAllText("log.txt", error.ToString());

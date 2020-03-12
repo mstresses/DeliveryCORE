@@ -2,6 +2,7 @@
 using BLL.Impl;
 using BLL.Interfaces;
 using DeliveryCORE.Models.Insert;
+using DeliveryCORE.Models.Query;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -45,8 +46,15 @@ namespace DeliveryCORE.Controllers
 
             return View();
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            List<ClienteDTO> clientes = await _clienteService.GetClientes();
+
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteDTO, ClienteQueryViewModel>(); });
+            IMapper mapper = configuration.CreateMapper();
+            List<ClienteQueryViewModel> clienteViewModel = mapper.Map<List<ClienteQueryViewModel>>(clientes);
+
+            ViewBag.Clientes = clienteViewModel;
             return View();
         }
     }

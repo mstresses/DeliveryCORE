@@ -2,6 +2,7 @@
 using BLL.Impl;
 using BLL.Interfaces;
 using DeliveryCORE.Models.Insert;
+using DeliveryCORE.Models.Query;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,15 +14,23 @@ namespace DeliveryCORE.Controllers
 {
     public class ProdutoController : Controller
     {
+        private IRestauranteService _restauranteService;
         private IProdutoService _produtoService;
-        public ProdutoController(IProdutoService produtoService)
+        public ProdutoController(IProdutoService produtoService, IRestauranteService restauranteService)
         {
             this._produtoService = produtoService;
+            this._restauranteService = restauranteService;
         }
 
         [HttpGet]
-        public IActionResult Cadastrar()
+        public async Task<IActionResult> Cadastrar()
         {
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteDTO, RestauranteSimpleResultSet>().ForMember(c => c.Nome, opts => opts.MapFrom(c => c.NomeFantasia)); });
+            IMapper mapper = configuration.CreateMapper();
+            List<RestauranteDTO> listRestaurantes = await _restauranteService.GetRestaurantes();
+            List<RestauranteSimpleResultSet> restaurantes = mapper.Map<List<RestauranteSimpleResultSet>>(listRestaurantes);
+            ViewBag.Restaurantes = restaurantes;
+
             return View();
         }
 

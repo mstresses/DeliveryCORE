@@ -22,8 +22,6 @@ namespace DeliveryCORE.Controllers
             this._restauranteService = restauranteService;
         }
 
-      
-
         public async Task<IActionResult> Index()
         {
             List<RestauranteDTO> restaurantes = await _restauranteService.GetRestaurantes();
