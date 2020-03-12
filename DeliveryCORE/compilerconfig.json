@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "wwwroot/scss/utilities/_align.css",
+    "inputFile": "wwwroot/scss/utilities/_align.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/bootstrap-reboot.css",
+    "inputFile": "wwwroot/scss/bootstrap-reboot.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/bootstrap-grid.css",
+    "inputFile": "wwwroot/scss/bootstrap-grid.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/bootstrap.css",
+    "inputFile": "wwwroot/scss/bootstrap.scss"
+  }
+]
