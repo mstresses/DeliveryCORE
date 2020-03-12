@@ -11,7 +11,7 @@
         <form asp-action="Cadastrar">
             <div class="form-group">
                 <label asp-for="RestauranteID" class="control-label">Selecione um Restaurante</label>
-                <select class="form-control" id="RestauranteID" name="Restaurante" asp-for="RestauranteID">
+                <select class="form-control" id="RestauranteID" name="RestauranteID" asp-for="RestauranteID">
                     @foreach (var item in ViewBag.Restaurantes)
                         {
                             <option value="@item.ID">@item.Nome</option>

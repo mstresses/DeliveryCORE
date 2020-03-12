@@ -26,15 +26,5 @@ namespace DAO
         {
             return await _context.Clientes.ToListAsync();
         }
-
-        public async Task<ClienteDTO> Authenticate(string email, string senha)
-        {
-            ClienteDTO user = await _context.Clientes.FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
-            if (user == null)
-            {
-                throw new Exception("Email e/ou senha inválidos");
-            }
-            return user;
-        }
     }
 }

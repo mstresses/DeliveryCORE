@@ -11,6 +11,5 @@ namespace DAO.Interfaces
     {
         Task Insert(ClienteDTO cliente);
         Task<List<ClienteDTO>> GetClientes();
-        Task<ClienteDTO> Authenticate(string email, string senha);
     }
 }

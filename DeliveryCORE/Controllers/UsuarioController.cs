@@ -60,7 +60,7 @@ namespace DeliveryCORE.Controllers
                 HttpCookie cookie = new HttpCookie();
                 cookie.Expires = DateTime.MaxValue;
                 Response.Cookies.Append("USERIDENTITY", usuario.ID.ToString());
-                //Response.Cookies.Add(cookie);
+              
                 return RedirectToAction("Cadastrar", "Pedido");
             }
             catch (Exception ex)

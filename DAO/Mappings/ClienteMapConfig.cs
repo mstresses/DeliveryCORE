@@ -23,7 +23,7 @@ namespace DAO.Mappings
             builder.Property(c => c.Email).IsRequired().HasMaxLength(60);
             builder.HasIndex(c => c.Email).IsUnique();
 
-            builder.Property(c => c.Telefone).IsRequired().HasMaxLength(12);
+            builder.Property(c => c.Telefone).IsRequired().HasMaxLength(20);
             builder.HasIndex(c => c.Telefone).IsUnique();
 
             builder.Property(c => c.Senha).IsRequired().HasMaxLength(20);

@@ -59,19 +59,19 @@ namespace DeliveryCORE.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult PesquisaCEP(string cep)
-        {
-            cep = cep.Replace("-", "");
-            CepRemoteService cepSvc = new CepRemoteService(cep);
-            var obj = new
-            {
-                Bairro = cepSvc.Bairro,
-                Rua = cepSvc.Logradouro,
-                UF = cepSvc.UF,
-                Cidade = cepSvc.Cidade
-            };
-            return Json(obj);
-        }
+        //[HttpPost]
+        //public IActionResult PesquisaCEP(string cep)
+        //{
+        //    cep = cep.Replace("-", "");
+        //    CepRemoteService cepSvc = new CepRemoteService(cep);
+        //    var obj = new
+        //    {
+        //        Bairro = cepSvc.Bairro,
+        //        Rua = cepSvc.Logradouro,
+        //        UF = cepSvc.UF,
+        //        Cidade = cepSvc.Cidade
+        //    };
+        //    return Json(obj);
+        //}
     }
 }
