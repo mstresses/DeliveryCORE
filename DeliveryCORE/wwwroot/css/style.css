@@ -9,6 +9,16 @@ body {
   line-height: 1.8;
   color: #868e96; }
 
+header {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    background-image: url('../img/banner-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+   
+}
 a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
