@@ -13,9 +13,9 @@
                 <label asp-for="RestauranteID" class="control-label">Selecione um Restaurante</label>
                 <select class="form-control" id="RestauranteID" name="RestauranteID" asp-for="RestauranteID">
                     @foreach (var item in ViewBag.Restaurantes)
-                        {
-                            <option value="@item.ID">@item.Nome</option>
-                        }
+                    {
+                        <option value="@item.ID">@item.Nome</option>
+                    }
                 </select>
                 <span asp-validation-for="RestauranteID" class="text-danger"></span>
             </div>
@@ -28,8 +28,8 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input asp-for="Valor" class="form-control" />
+                <label asp-for="Valor" class="control-label">R$</label>
+                <input style="display:inline-block" asp-for="Valor" type="text" id="Valor" name="Valor" class="form-control" />
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
 
@@ -47,13 +47,6 @@
 
 @section scripts{
     <script type="text/javascript">
-
-  
-
-
-
-
-
         $(document).ready(function () {
             var cpfMask = $("#Cpf");
             cpfMask.mask('000.000.000-00', { reverse: false });
