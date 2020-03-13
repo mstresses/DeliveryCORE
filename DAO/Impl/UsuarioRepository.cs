@@ -44,16 +44,6 @@ namespace DAO.Impl
                 throw new Exception("Email e/ou senha inválidos");
             }
             return user;
-
-            //using (var ctx = new DeliveryContext())
-            //{
-            //    UsuarioDTO user = await ctx.Usuarios.FirstOrDefaultAsync(u => u.Email == email && u.Senha == password);
-            //    if (user == null)
-            //    {
-            //        throw new Exception("Email e/ou senha inválidos");
-            //    }
-            //    return user;
-            //}
         }
     }
 }
