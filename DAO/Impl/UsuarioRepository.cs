@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace DAO.Impl
 {
@@ -37,7 +38,7 @@ namespace DAO.Impl
 
         public async Task<UsuarioDTO> Authenticate(string email, string senha)
         {
-            UsuarioDTO user = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
+            var user = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email && u.Senha == senha);
             if (_context == null)
             {
                 throw new Exception("Email e/ou senha inválidos");

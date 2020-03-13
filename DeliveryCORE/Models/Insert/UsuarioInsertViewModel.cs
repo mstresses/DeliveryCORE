@@ -9,9 +9,6 @@ namespace DeliveryCORE.Models.Insert
     public class UsuarioInsertViewModel
     {
         [Required]
-        public string Nome { get; set; }
-
-        [Required]
         public string Email { get; set; }
         
         [Required]
