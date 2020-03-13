@@ -18,6 +18,7 @@ namespace BLL.Impl
         {
             this._usuarioRepository = usuarioRepository;
         }
+
         public async Task Insert(UsuarioDTO usuario)
         {
             try
