@@ -58,8 +58,8 @@
             var cpfMask = $("#Cpf");
             cpfMask.mask('000.000.000-00', { reverse: false });
 
-
-            var valor = $("#Valor").maskMoney({ symbol: 'R$ ', thousands: '.', decimal: ',', symbolStay: true });
+             var valor = $("#Valor").mask('#.##0,00', {reverse: true});
+             @*var valor = $("#Valor").maskMoney({symbol:'R$ ', thousands:'.', decimal:',', symbolStay: true});*@
          });
     </script>
 }
