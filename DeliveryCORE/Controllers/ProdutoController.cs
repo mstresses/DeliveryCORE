@@ -59,10 +59,10 @@ namespace DeliveryCORE.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> GetProdutosRestaurante(int idRestaurante)
+        [HttpPost]
+        public async Task<IActionResult> GetProdutosRestaurante(int id)
         {
-            List<ProdutoDTO> produtos = await _produtoService.GetProductsByRestaurant(idRestaurante);
+            List<ProdutoDTO> produtos = await _produtoService.GetProductsByRestaurant(id);
             return Json(produtos);
         }
     }
