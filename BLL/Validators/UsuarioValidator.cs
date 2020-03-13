@@ -14,9 +14,6 @@ namespace BLL.Validators
         {
             List<Error> error = new List<Error>();
 
-            RuleFor(u => u.Nome).NotNull().WithMessage("O nome deve ser informado.");
-            error.Add(new Error() { FieldName = "Nome", Message = "Problema com o nome, verifique." });
-
             RuleFor(u => u.Email).NotNull().EmailAddress().WithMessage("O email deve ser informado.");
             error.Add(new Error() { FieldName = "Email", Message = "Problema com o Email, verifique." });
 
