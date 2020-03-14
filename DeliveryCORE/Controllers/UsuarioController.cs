@@ -29,7 +29,6 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<ActionResult> Cadastrar(UsuarioInsertViewModel usuarioViewModel)
         {
-            
             var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<UsuarioInsertViewModel, UsuarioDTO>(); });
             IMapper mapper = configuration.CreateMapper();
             UsuarioDTO dto = mapper.Map<UsuarioDTO>(usuarioViewModel);
@@ -46,17 +45,17 @@ namespace DeliveryCORE.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Login()
+        public async Task<IActionResult> Login()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(string email, string senha)
+        public async Task<IActionResult> Login(string email, string senha)
         {
             try
             {
-                UsuarioDTO usuario = await _usuarioService.Authenticate(email, senha);
+                var usuario = await _usuarioService.Authenticate(email, senha);
                 HttpCookie cookie = new HttpCookie();
                 cookie.Expires = DateTime.MaxValue;
                 Response.Cookies.Append("USERIDENTITY", usuario.ID.ToString());

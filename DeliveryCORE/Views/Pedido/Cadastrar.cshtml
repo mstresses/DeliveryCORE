@@ -8,8 +8,6 @@
 <img src="~/img/landing-banner-2.png" width="230" height="150" alt="Alternate Text" />
 <img src="~/img/landing-banner-1.png" width="230" height="150" alt="Alternate Text" />
 
-
-
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,16 +25,11 @@
                 <span asp-validation-for="Restaurante" class="text-danger"></span>
             </div>
 
-            @*<div class="form-group">
-                    <label asp-for="Produto.Restaurante" class="control-label">Selecione um Produto</label>
-                    <select class="form-control" id="Produto.Restaurante" name="Produto.Restaurante" asp-for="Produto.Restaurante">
-                        @foreach (var item in ViewBag.Produtos)
-                        {
-                            <option value="@item.ID">@item.Nome</option>
-                        }
-                    </select>
-                    <span asp-validation-for="Produto.Restaurante" class="text-danger"></span>
-                </div>*@
+            <div class="form-group">
+                <label asp-for="Produto.Restaurante" class="control-label">Selecione um Produto</label>
+                <select class="form-control" id="ProdutoID" name="ProdutoID" asp-for="Produto.ID">
+                </select>
+            </div>
 
             <div class="form-group">
                 <label asp-for="Quantidade" class="control-label">Informe a quantidade</label>
@@ -71,7 +64,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Efetuar Pedido" class="btn btn-primary" id="BotaoEnviar" name="BotaoEnviar" />
             </div>
         </form>
     </div>
@@ -89,17 +82,17 @@
         $(document).ready(function () {
 
             $("#Restaurante").change(function () {
-                var id = $("#Restaurante").val();
-
+                debugger
+                var id = $("select#Restaurante option").filter(":selected").val();
                 $.ajax({
-                    url: '\Produto\GetProdutosRestaurante',
-                    type: 'GET',
-                    data: { idRestaurante: id },
+                    url: '@Url.Action("GetProdutosRestaurante","Produto")',
+                    type: 'post',
+                    data: {id: id} ,
                     success: function (result) {
-                        //Fazer quanto a parte do backend estiver pronta
-                        $.each(result, function () {
-                            $("#Restaurante").append("<option />").val(this.ID).text(this.Nome);
-                        });
+                        for (var i = 0; i < result.length; i++) {
+                            $("#ProdutoID").html();
+                            $("#ProdutoID").append("<option value='" + result[i].ID + "'>" + result[i].Nome + "</option>")
+                        }
                     },
                     error: function (result) {
                         alert('Erro na comunicação com o servidor');
@@ -108,6 +101,18 @@
             });
         });
 
+                    //$("#BotaoEnviar").click(function () {
+                    //    var valorTotal = ("#Quantidade") * ("#Produto");
+                    //    var taxa = 8;
+                    //    if (valorTotal < 50) {
+                    //        ("#TaxaEntrega") = true;
+                    //        valorTotal += taxa;
+                    //        alert("O VALOR TOTAL DO SEU PEDIDO É R$" + valorTotal)
+                    //    }
+                    //    else {
+                    //        ("#TaxaEntrega") = false;
+                    //        alert("O VALOR TOTAL DO SEU PEDIDO É R$" + valorTotal)
+                    //    }
+                    //},
     </script>
-
 }

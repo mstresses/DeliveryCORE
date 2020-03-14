@@ -13,8 +13,6 @@ namespace DAO.Mappings
         {
             builder.ToTable("USUARIOS");
 
-            builder.Property(u => u.Nome).IsRequired().HasMaxLength(60);
-
             builder.Property(u => u.Email).HasMaxLength(100);
             builder.HasIndex(u => u.Email).IsUnique(true).HasName("UQ_USUARIO_EMAIL");
 
