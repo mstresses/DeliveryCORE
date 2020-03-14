@@ -6,7 +6,7 @@ body {
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.8;
+  line-height: normal;
   color: #171716; }
 
 header {
@@ -100,13 +100,16 @@ header {
   header .navbar-brand {
     text-transform: uppercase;
     letter-spacing: .2em;
-    font-weight: 800;
-    font-size: 2rem; }
+    font-weight: 1000;
+    font-size: 4rem;
+    font-family:'Fonce Sans';
+  }
+  
     header .navbar-brand.absolute {
       position: absolute; }
       @media (max-width: 991px) {
         header .navbar-brand.absolute {
-          position: relative; } }
+          position:page; } }
     header .navbar-brand span {
       color: #ff7404; }
       @media (min-width: 768px) {
