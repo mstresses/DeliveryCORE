@@ -17,17 +17,31 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+
             <div class="container">
 
-                <a class="navbar-brand" style="color: #ffffff"   asp-area="" asp-controller="Home" asp-action="Index">
+
+                <a class="navbar-brand" style="color: #ffffff" asp-area="" asp-controller="Home" asp-action="Index">
                     Delivery CORE
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
+                <p>@Html.ActionLink("Restaurante", "Cadastrar", "Restaurante")<style>                    a {
+                        color: #FFFFFF;
+                        text-decoration: solid
+                    }
+                    a:hover {
+                        color: #FF5722;
+                    } </style></p>
+                <p>@Html.ActionLink("Cliente", "Cadastrar", "Cliente")</p>
+                <p>@Html.ActionLink("Pedido", "Cadastrar", "Pedido")</p>
+                <p>@Html.ActionLink("Login", "Login", "Usuario")</p>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul @*class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Cliente"><b>Cliente</b></a>
                         </li>
@@ -40,7 +54,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Login"><b>Login</b></a>
-                        </li>
+                        </li>*@
 
                     </ul>
                 </div>
@@ -52,6 +66,8 @@
             @RenderBody()
         </main>
     </div>
+
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
