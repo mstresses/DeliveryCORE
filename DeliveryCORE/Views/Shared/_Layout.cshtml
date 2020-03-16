@@ -23,6 +23,7 @@
                 <a class="navbar-brand" style="color: #ffffff" asp-area="" asp-controller="Home" asp-action="Index">
                     Delivery CORE
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -56,20 +57,37 @@
 
             </div>
 
-            
-
 
         </nav>
+
     </header>
     
         <body>
+            <div class="hashtag">
+                <main>
+                    <a href="/hashtag/GiraffasNoPorta?src=hashtag_click" dir="ltr" role="link" data-focusable="true"> #Pizza </a>
+                    <a href="/hashtag/GiraffasNoPorta?src=hashtag_click" dir="ltr" role="link" data-focusable="true"> #Hamburguer </a>
+                    <a href="/hashtag/GiraffasNoPorta?src=hashtag_click" dir="ltr" role="link" data-focusable="true"> #Japonesa </a>
+                    <a href="/hashtag/GiraffasNoPorta?src=hashtag_click" dir="ltr" role="link" data-focusable="true">#Brasileira</a>
+                    <a href="/hashtag/GiraffasNoPorta?src=hashtag_click" dir="ltr" role="link" data-focusable="true">#Árabe</a>
+                    <a href="/hashtag/GiraffasNoPorta?src=hashtag_click" dir="ltr" role="link" data-focusable="true">#Italiana</a>
 
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
+                </main>
+            </div>
 
-            </main>
-        </div>
+
+            <div class="container">
+                <main>
+
+                </main>
+
+                <main role="main" class="pb-3">
+
+                    @RenderBody()
+
+                </main>
+            </div>
+
 
 
 
