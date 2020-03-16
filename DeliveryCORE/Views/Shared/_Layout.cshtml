@@ -28,17 +28,32 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
-                <p>@Html.ActionLink("Restaurante", "Cadastrar", "Restaurante")<style>                    a {
-                        color: #FFFFFF;
-                        text-decoration: solid
-                    }
-                    a:hover {
-                        color: #FF5722;
-                    } </style></p>
-                <p>@Html.ActionLink("Cliente", "Cadastrar", "Cliente")</p>
-                <p>@Html.ActionLink("Pedido", "Cadastrar", "Pedido")</p>
-                <p>@Html.ActionLink("Login", "Login", "Usuario")</p>
+
+
+
+                <pre>@Html.ActionLink("  Restaurante  ", "Cadastrar", "Restaurante")<style>
+                                                                                        a {
+                                                                                            color: #FFFFFF;
+                                                                                            font-size: larger;
+                                                                                            text-align: center;
+                                                                                            font-family: sans-serif;
+                                                                                            font-size-adjust: none;
+                                                                                            font-weight: 600
+                                                                                        }
+
+                                                                                            a:active {
+                                                                                                color: #ff0000;
+                                                                                            }
+
+                                                                                            a:hover {
+                                                                                                color: #000000;
+                                                                                            }
+
+                                                                                        :
+</style></pre>
+                <pre>@Html.ActionLink("  Cliente  ","Cadastrar", "Cliente")</pre>
+                <pre>@Html.ActionLink("  Pedido  ", "Cadastrar", "Pedido")</pre>
+                <pre>@Html.ActionLink("  Login  ", "Login", "Usuario")</pre>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul @*class="navbar-nav flex-grow-1">
@@ -57,13 +72,33 @@
                         </li>*@
 
                     </ul>
+
+
                 </div>
             </div>
         </nav>
     </header>
+       
+       
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <div class="landing-header-tags">
+                <div class="marmita-scrollbox">
+                    <div class="marmita-scrollbox__wrapper">
+                        <div class="marmita-scrollbox__container" role="list">
+                            <div role="listitem" class="marmita-scrollbox__item">
+                                <a class="btn btn--default btn--size-m landing-header-tags__tag" role="button" target="" rel="" href="/busca?q=pizza">
+                                    <canvas height="0" width="0" style="border-radius: inherit; height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"></canvas>
+                                    <span class="btn__label">#pizza</span>
+                                </a>
+                            </div>
+                            <div role="listitem" class="marmita-scrollbox__item"><a class="btn btn--default btn--size-m landing-header-tags__tag" role="button" target="" rel="" href="/busca?q=lanche"><span class="btn__label">#lanche</span></a></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
