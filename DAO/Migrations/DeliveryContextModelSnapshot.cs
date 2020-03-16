@@ -171,11 +171,6 @@ namespace DAO.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
-
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);

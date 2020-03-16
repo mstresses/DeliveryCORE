@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAO.Migrations
 {
-    public partial class DeliveryCore : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace DAO.Migrations
                     Nome = table.Column<string>(maxLength: 60, nullable: false),
                     DataNascimento = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(maxLength: 60, nullable: false),
-                    Telefone = table.Column<string>(maxLength: 12, nullable: false),
+                    Telefone = table.Column<string>(maxLength: 20, nullable: false),
                     Cpf = table.Column<string>(maxLength: 14, nullable: false),
                     Senha = table.Column<string>(maxLength: 20, nullable: false)
                 },
@@ -47,7 +47,6 @@ namespace DAO.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 60, nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: true),
                     Senha = table.Column<string>(maxLength: 15, nullable: true)
                 },
