@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAO.Migrations
 {
     [DbContext(typeof(DeliveryContext))]
-    [Migration("20200312184942_TelefoneMaisCaracteres")]
-    partial class TelefoneMaisCaracteres
+    [Migration("20200316034147_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,11 +172,6 @@ namespace DAO.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
 
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(15)")

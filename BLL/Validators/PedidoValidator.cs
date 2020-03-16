@@ -25,11 +25,13 @@ namespace BLL.Validators
             RuleFor(p => p.ValorTotal).NotNull().LessThanOrEqualTo(0);
             error.Add(new Error() { FieldName = "ValorTotal", Message = "Problema com o valor, verifique." });
 
-            RuleFor(p => p.TaxaEntrega).NotNull().WithMessage("A taxa de entrega deve ser informada"); ;
+            RuleFor(p => p.TaxaEntrega).NotNull().WithMessage("A taxa de entrega deve ser informada");
             error.Add(new Error() { FieldName = "TaxaEntrega", Message = "Problema com a taxa de entrega, verifique." });
 
             RuleFor(p => p.FormaPagamento).NotNull().WithMessage("A forma de pagamento deve ser informada"); ;
             error.Add(new Error() { FieldName = "FormaPagamento", Message = "Problema com a forma de pagamento, verifique." });
+
+
             
             //if (error.Count > 0)
             //{
