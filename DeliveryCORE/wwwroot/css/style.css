@@ -31,6 +31,17 @@ body {
     margin: auto;
 }
 
+
+.hashtag {
+-webkit-box-direction:normal;
+-webkit-box-orient: horizontal;
+flex-direction: row;
+font-size:12px;
+font-weight:300;
+margin:180px;
+}
+
+
 a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
