@@ -25,6 +25,17 @@ namespace BLL.Impl
 
         public async Task Insert(PedidoDTO pedido)
         {
+            pedido.ValorTotal = pedido.Quantidade * pedido.Produto.Valor;
+            if (pedido.ValorTotal < 50)
+            {
+                pedido.TaxaEntrega = true;
+                pedido.ValorTotal += 8;
+            }
+            else
+            {
+                pedido.TaxaEntrega = false;
+            }
+
             try
             {
                 await _pedidoRepository.Insert(pedido);

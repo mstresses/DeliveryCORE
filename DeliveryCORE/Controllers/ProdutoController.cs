@@ -53,11 +53,17 @@ namespace DeliveryCORE.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            List<ProdutoDTO> produtos = await _produtoService.GetProdutos();
+
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ProdutoDTO, ProdutoQueryViewModel>(); });
+            IMapper mapper = configuration.CreateMapper();
+            List<ProdutoQueryViewModel> produtoViewModel = mapper.Map<List<ProdutoQueryViewModel>>(produtos);
+
+            ViewBag.Produtos = produtoViewModel;
             return View();
         }
-
 
         [HttpPost]
         public async Task<IActionResult> GetProdutosRestaurante(int id)
