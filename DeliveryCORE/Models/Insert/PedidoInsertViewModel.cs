@@ -17,7 +17,7 @@ namespace DeliveryCORE.Models.Insert
         [DisplayName("Produto"), Required(ErrorMessage = "O produto deve ser informado.")]
         public ProdutoDTO Produto { get; set; }
 
-        [DisplayName("Quantidade"), Required(ErrorMessage = "A quantidade deve ser informada.")]
+        [DisplayName("Quantidade"), MinLength(0), Required(ErrorMessage = "A quantidade deve ser informada.")]
         public double Quantidade { get; set; }
 
         [DisplayName("ValorTotal"), ReadOnly(true)]

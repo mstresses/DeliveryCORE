@@ -31,8 +31,6 @@ namespace BLL.Validators
             RuleFor(p => p.FormaPagamento).NotNull().WithMessage("A forma de pagamento deve ser informada"); ;
             error.Add(new Error() { FieldName = "FormaPagamento", Message = "Problema com a forma de pagamento, verifique." });
 
-
-            
             //if (error.Count > 0)
             //{
             //    File.WriteAllText("log.txt", error.ToString());

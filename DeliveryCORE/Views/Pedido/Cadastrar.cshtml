@@ -22,7 +22,6 @@
                         <option value="@item.ID">@item.Nome</option>
                     }
                 </select>
-                <span asp-validation-for="Restaurante" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -43,9 +42,6 @@
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
 
-
-
-
             @{
                 string[] formaPagamento = Enum.GetNames(typeof(DTO.Enums.FormaPagamento));
             }
@@ -57,7 +53,6 @@
                         <option value="@i">@formaPagamento[i]</option>
                     }
                 </select>
-                <span asp-validation-for="FormaPagamento" class="text-danger"></span>
             </div>
 
             <div class="form-group form-check">
@@ -90,32 +85,24 @@
                 $.ajax({
                     url: '@Url.Action("GetProdutosRestaurante","Produto")',
                     type: 'post',
-                    data: {id: id} ,
+                    data: { id: id },
                     success: function (result) {
                         for (var i = 0; i < result.length; i++) {
-                            $("#ProdutoID").html();
+                            $("#ProdutoID").html(result);
+                            //$('#ProdutoID').append($('<option></option>').attr('value', result[i].ID + result[i].Nome));
                             $("#ProdutoID").append("<option value='" + result[i].ID + "'>" + result[i].Nome + "</option>")
-                        }
+                            //$("#ProdutoID").attr("<option value='" + result[i].ID + "'>" + result[i].Nome + "</option>")
+                        };
                     },
                     error: function (result) {
-                        alert('Erro na comunicação com o servidor');
+                        alert('Erro na comunicação com o servidor')
                     }
                 });
             });
         });
 
-                    //$("#BotaoEnviar").click(function () {
-                    //    var valorTotal = ("#Quantidade") * ("#Produto");
-                    //    var taxa = 8;
-                    //    if (valorTotal < 50) {
-                    //        ("#TaxaEntrega") = true;
-                    //        valorTotal += taxa;
-                    //        alert("O VALOR TOTAL DO SEU PEDIDO É R$" + valorTotal)
-                    //    }
-                    //    else {
-                    //        ("#TaxaEntrega") = false;
-                    //        alert("O VALOR TOTAL DO SEU PEDIDO É R$" + valorTotal)
-                    //    }
-                    //},
+        $("#BotaoEnviar").click(function () {
+            alert("O VALOR TOTAL DO SEU PEDIDO É: R$" + valorTotal);
+        });
     </script>
 }
