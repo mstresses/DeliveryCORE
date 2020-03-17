@@ -33,12 +33,15 @@ body {
 
 
 .hashtag {
--webkit-box-direction:normal;
--webkit-box-orient: horizontal;
-flex-direction: row;
-font-size:12px;
-font-weight:300;
-margin:180px;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 100px;
+    text-orientation:sideways-right;
+    text-align: right
+
 }
 
 
