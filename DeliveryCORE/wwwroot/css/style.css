@@ -1,4 +1,4 @@
-html {
+5html {
   overflow-x: hidden; }
 
 
@@ -37,10 +37,12 @@ body {
     -webkit-box-orient: horizontal;
     flex-direction: row;
     font-size: 14px;
-    font-weight: 400;
-    margin: 100px;
-    text-orientation:sideways-right;
-    text-align: right
+    font-weight: 500;
+    margin: 90px;
+    text-orientation: sideways-right;
+    text-align: center;
+ 
+}
 
 }
 

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1 style="margin-top: 90px; padding-top: 90px;">Cadastre seu produto!</h1>
+<h1 style="margin-top: -240px; padding-top: -10px;">Cadastre seu produto!</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -50,9 +50,9 @@
         $(document).ready(function () {
             var cpfMask = $("#Cpf");
             cpfMask.mask('000.000.000-00', { reverse: false });
-            
-             var valor = $("#Valor").mask('#.##0,00', {reverse: true});
-             
-         });
+
+            var valor = $("#Valor").mask('#.##0,00', { reverse: true });
+
+        });
     </script>
 }
