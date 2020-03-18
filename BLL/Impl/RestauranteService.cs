@@ -46,6 +46,32 @@ namespace BLL.Impl
             }
         }
 
+        public async Task Update(RestauranteDTO restaurante)
+        {
+            try
+            {
+                await _restauranteRepository.Update(restaurante);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
+
+        public async Task Delete(RestauranteDTO restaurante)
+        {
+            try
+            {
+                await _restauranteRepository.Delete(restaurante);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
+
         Task<List<RestauranteDTO>> IRestauranteService.GetRestaurantes()
         {
             return _restauranteRepository.GetRestaurantes();
