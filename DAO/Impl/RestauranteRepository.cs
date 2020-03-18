@@ -12,7 +12,7 @@ namespace DAO
     {
         private DeliveryContext _context;
 
-        public RestauranteRepository(DeliveryContext context) //Contrutor com INJEÇÃO DE DEPENDENCIA.
+        public RestauranteRepository(DeliveryContext context) //Construtor com INJEÇÃO DE DEPENDENCIA.
         {
             this._context = context;
         }
@@ -20,6 +20,18 @@ namespace DAO
         public async Task Insert(RestauranteDTO restaurante)
         {
             this._context.Restaurantes.Add(restaurante);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(RestauranteDTO restaurante)
+        {
+            this._context.Restaurantes.Update(restaurante);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(RestauranteDTO restaurante)
+        {
+            this._context.Restaurantes.Remove(restaurante);
             await _context.SaveChangesAsync();
         }
 
