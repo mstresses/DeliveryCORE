@@ -10,6 +10,8 @@ namespace DAO.Interfaces
     public interface IClienteRepository
     {
         Task Insert(ClienteDTO cliente);
+        Task Update(ClienteDTO cliente);
+        Task Delete(ClienteDTO cliente);
         Task<List<ClienteDTO>> GetClientes();
     }
 }

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using BLL.Impl;
 using BLL.Interfaces;
+using DeliveryCORE.Models.Delete;
 using DeliveryCORE.Models.Insert;
 using DeliveryCORE.Models.Query;
+using DeliveryCORE.Models.Update;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,6 +20,18 @@ namespace DeliveryCORE.Controllers
         public ClienteController(IClienteService clienteService)
         {
             this._clienteService = clienteService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            List<ClienteDTO> clientes = await _clienteService.GetClientes();
+
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteDTO, ClienteQueryViewModel>(); });
+            IMapper mapper = configuration.CreateMapper();
+            List<ClienteQueryViewModel> clienteViewModel = mapper.Map<List<ClienteQueryViewModel>>(clientes);
+
+            ViewBag.Clientes = clienteViewModel;
+            return View();
         }
 
         [HttpGet]
@@ -43,19 +57,53 @@ namespace DeliveryCORE.Controllers
             {
                 ViewBag.ErroGenerico = ex.Message;
             }
-
             return View();
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Atualizar()
         {
-            List<ClienteDTO> clientes = await _clienteService.GetClientes();
+            return View();
+        }
 
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteDTO, ClienteQueryViewModel>(); });
+        [HttpPost]
+        public async Task<IActionResult> Atualizar(ClienteUpdateViewModel updateViewModel)
+        {
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteUpdateViewModel, ClienteDTO>(); });
             IMapper mapper = configuration.CreateMapper();
-            List<ClienteQueryViewModel> clienteViewModel = mapper.Map<List<ClienteQueryViewModel>>(clientes);
+            ClienteDTO cliente = mapper.Map<ClienteDTO>(updateViewModel);
 
-            ViewBag.Clientes = clienteViewModel;
+            try
+            {
+                await _clienteService.Update(cliente);
+                return RedirectToAction("Index", "Cliente");
+            }
+
+            catch (Exception ex)
+            {
+                ViewBag.ErroGenerico = ex.Message;
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Excluir()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Excluir(ClienteDTO cliente)
+        {
+            try
+            {
+                await _clienteService.Delete(cliente);
+                return RedirectToAction("Index", "Cliente");
+            }
+
+            catch (Exception ex)
+            {
+                ViewBag.ErroGenerico = ex.Message;
+            }
             return View();
         }
     }
