@@ -12,10 +12,14 @@
     </tr>
     @foreach (var item in ViewBag.Restaurantes)
     {
-        <tr>
-            <td>@item.ID</td>
-            <td>@item.Nome</td>
-        </tr>
+<tr>
+    <td>@item.ID</td>
+    <td>@item.Nome</td>
+    <td>
+        @Html.ActionLink("Atualizar", "Atualizar", new { id = item /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Excluir", "Excluir", new { id = item /* id=item.PrimaryKey */ })
+    </td>
+</tr>
     }
 </table>
 

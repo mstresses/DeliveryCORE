@@ -8,6 +8,7 @@ using BLL.Interfaces;
 using BLL.Remote;
 using DeliveryCORE.Models;
 using DeliveryCORE.Models.Query;
+using DeliveryCORE.Models.Update;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,6 +53,53 @@ namespace DeliveryCORE.Controllers
                 await _restauranteService.Insert(restaurante);
                 return RedirectToAction("Index", "Restaurante");
             }
+            catch (Exception ex)
+            {
+                ViewBag.ErroGenerico = ex.Message;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Atualizar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Atualizar(RestauranteUpdateViewModel updateViewModel)
+        {
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteUpdateViewModel, ClienteDTO>(); });
+            IMapper mapper = configuration.CreateMapper();
+            RestauranteDTO restaurante = mapper.Map<RestauranteDTO>(updateViewModel);
+
+            try
+            {
+                await _restauranteService.Update(restaurante);
+                return RedirectToAction("Index", "Restaurante");
+            }
+
+            catch (Exception ex)
+            {
+                ViewBag.ErroGenerico = ex.Message;
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Excluir()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Excluir(RestauranteDTO restaurante)
+        {
+            try
+            {
+                await _restauranteService.Delete(restaurante);
+                return RedirectToAction("Index", "Restaurante");
+            }
+
             catch (Exception ex)
             {
                 ViewBag.ErroGenerico = ex.Message;

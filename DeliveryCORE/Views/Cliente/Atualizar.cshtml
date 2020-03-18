@@ -1,86 +1,60 @@
-﻿@model DeliveryCORE.Models.Insert.ClienteInsertViewModel
+﻿@model DeliveryCORE.Models.Update.ClienteUpdateViewModel
 
 @{
-    ViewData["Title"] = "Cadastrar";
+    ViewData["Title"] = "Atualizar";
 }
-@*<img src="~/img/dishes_1.jpg" width="477" height="197" alt="Alternate Text" />*@
 
-<h1 style="margin-top: -240px; padding-top: -10px;">Cadastro de Clientes</h1>
+<h1>Atualizar Cadastro</h1>
 
-
-@*<img src="~/img/dishes_1.jpg" width="600" height="400" alt="Alternate Text" />*@
-
-
+<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Cadastrar">
+        <form asp-action="Atualizar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            
             <div class="form-group">
                 <label asp-for="Nome" class="control-label">Nome</label>
-                <input asp-for="Nome" class="form-control" type="text"/>
+                <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-
+            
             <div class="form-group">
                 <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
-                <input asp-for="DataNascimento" class="form-control" type="date"/>
-                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                <input asp-for="DataNascimento" class="form-control" type="date" readonly/>
             </div>
-
+            
             <div class="form-group">
                 <label asp-for="Email" class="control-label">Email</label>
                 <input asp-for="Email" class="form-control" type="email"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-
+            
             <div class="form-group">
                 <label asp-for="Telefone" class="control-label">Telefone</label>
                 <input asp-for="Telefone" class="form-control" type="text"/>
                 <span asp-validation-for="Telefone" class="text-danger"></span>
             </div>
-
+            
             <div class="form-group">
                 <label asp-for="Cpf" class="control-label">CPF</label>
-                <input asp-for="Cpf" class="form-control" type="text"/>
+                <input asp-for="Cpf" class="form-control" readonly/>
                 <span asp-validation-for="Cpf" class="text-danger"></span>
             </div>
-
+            
             <div class="form-group">
                 <label asp-for="Senha" class="control-label">Senha</label>
                 <input asp-for="Senha" class="form-control" type="password"/>
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
-
+            
             <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
-
+        
         </form>
     </div>
 </div>
 
-@*<div>
-    <a asp-action="Index">Retornar para o Índice</a>
-</div>*@
-
-@section scripts{
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            var cpfMask = $("#Cpf");
-            cpfMask.mask('000.000.000-00', { reverse: false });
-
-            var telefoneMask = $("#Telefone");
-            telefoneMask.mask('(00) 00000-0009');
-            telefoneMask.blur(function (event) {
-                if ($(this).val().length == 15) {
-                    telefoneMask.mask('(00) 00000-0009');
-                }
-                else {
-                    telefoneMask.mask('(00) 0000-0009');
-                }
-            });
-        });
-    </script>
-}
+<div>
+    <a asp-action="Index">Retornar para a lista de usuários.</a>
+</div>

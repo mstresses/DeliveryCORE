@@ -26,7 +26,6 @@ namespace BLL.Impl
 
         public async Task Insert(ClienteDTO cliente)
         {
-            
             try
             {
                 await _clienteRepository.Insert(cliente);
@@ -44,6 +43,32 @@ namespace BLL.Impl
                 var resposta = cliente.Cpf.IsValidCPF();
                 if (resposta != "") error.Add(new Error() { FieldName = "CPF", Message = "CPF INVÁLIDO =" + resposta });
 
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
+
+        public async Task Update(ClienteDTO cliente)
+        {
+            try
+            {
+                await _clienteRepository.Update(cliente);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
+
+        public async Task Delete(ClienteDTO cliente)
+        {
+            try
+            {
+                await _clienteRepository.Delete(cliente);
+            }
+            catch (Exception ex)
+            {
                 File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
                 throw new Exception("Erro no banco de dados, contate o administrador.");
             }
