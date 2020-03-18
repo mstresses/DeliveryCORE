@@ -37,11 +37,11 @@ body {
     -webkit-box-orient: horizontal;
     flex-direction: row;
     font-size: 14px;
-    font-weight: 500;
-    margin: 90px;
-    text-orientation: sideways-right;
+    font-weight: 400;
+    margin: 60px;
     text-align: center;
- 
+    border-width: medium;
+   
 }
 
 }
