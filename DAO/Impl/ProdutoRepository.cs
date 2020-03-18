@@ -23,6 +23,18 @@ namespace DAO
             await _context.SaveChangesAsync();
         }
 
+        public async Task Update(ProdutoDTO produto)
+        {
+            _context.Produtos.Update(produto);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(ProdutoDTO produto)
+        {
+            _context.Produtos.Remove(produto);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<ProdutoDTO>> GetProdutos()
         {
             return await _context.Produtos.ToListAsync();

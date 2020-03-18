@@ -12,5 +12,6 @@ namespace DAO.Interfaces
         Task Update(RestauranteDTO restaurante);
         Task Delete(RestauranteDTO restaurante);
         Task<List<RestauranteDTO>> GetRestaurantes();
+        Task<List<RestauranteDTO>> GetRestaurantesByCategorias(string categoria);
     }
 }

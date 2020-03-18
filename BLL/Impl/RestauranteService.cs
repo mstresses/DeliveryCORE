@@ -77,5 +77,10 @@ namespace BLL.Impl
             return _restauranteRepository.GetRestaurantes();
 
         }
+
+        public async Task<List<RestauranteDTO>> GetRestaurantesByCategorias(string categoria)
+        {
+            return await _restauranteRepository.GetRestaurantesByCategorias(categoria);
+        }
     }
 }

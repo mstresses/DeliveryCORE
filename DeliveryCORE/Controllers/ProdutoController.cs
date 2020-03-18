@@ -55,14 +55,6 @@ namespace DeliveryCORE.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var produtos = from p in _produtoService select p;
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    produtos = produtos.Where(p => p.Categoria.Contains(searchString));
-            //}
-
-            //return View(await produtos.ToListAsync());
-
             List<ProdutoDTO> produtos = await _produtoService.GetProdutos();
 
             var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ProdutoDTO, ProdutoQueryViewModel>(); });

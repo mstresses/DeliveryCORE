@@ -3,6 +3,7 @@ using DTO;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +39,11 @@ namespace DAO
         public async Task<List<RestauranteDTO>> GetRestaurantes()
         {
             return await _context.Restaurantes.ToListAsync();
+        }
+
+        public async Task<List<RestauranteDTO>> GetRestaurantesByCategorias(string categoria)
+        {
+            return await _context.Restaurantes.Where(c=>c.Categoria == categoria).ToListAsync();
         }
     }
 }

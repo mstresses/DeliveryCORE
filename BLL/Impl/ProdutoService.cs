@@ -41,7 +41,33 @@ namespace BLL.Impl
                 throw new Exception("Erro no banco de dados, contate o administrador.");
             }
         }
-       
+
+        public async Task Update(ProdutoDTO produto)
+        {
+            try
+            {
+                await _produtoRepository.Update(produto);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
+
+        public async Task Delete(ProdutoDTO produto)
+        {
+            try
+            {
+                await _produtoRepository.Delete(produto);
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
+
         public async Task<List<ProdutoDTO>> GetProdutos()
         {
             return await _produtoRepository.GetProdutos();
