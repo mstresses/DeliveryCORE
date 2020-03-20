@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAO.Migrations
 {
     [DbContext(typeof(DeliveryContext))]
-    [Migration("20200318171518_DeliveryCoreDB")]
-    partial class DeliveryCoreDB
+    [Migration("20200320223150_DeliveryCoreDBase")]
+    partial class DeliveryCoreDBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

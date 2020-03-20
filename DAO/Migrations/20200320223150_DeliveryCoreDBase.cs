@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAO.Migrations
 {
-    public partial class DeliveryCoreDB : Migration
+    public partial class DeliveryCoreDBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
