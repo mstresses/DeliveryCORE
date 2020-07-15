@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Repositories.ClienteRepository
 {
-    public class UsuarioRepository : GenericRepository<User>, IUsuarioRepository
+    public class UsuarioRepository : GenericRepository<User>, IUserRepository
     {
         private readonly ILogger _logger;
 
@@ -84,7 +84,7 @@ namespace DAO.Repositories.ClienteRepository
             return await _dbSet.AnyAsync(u => u.Login == usuario.Login && !u.Deleted && u.Id != usuario.Id);
         }
 
-        Task<User> IUsuarioRepository.GetByLogin(string login)
+        Task<User> IUserRepository.GetByLogin(string login)
         {
             throw new System.NotImplementedException();
         }

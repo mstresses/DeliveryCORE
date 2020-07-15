@@ -11,8 +11,8 @@ namespace BLL.Impl
 {
     public class UsuarioService : UsuarioValidator, IUsuarioService
     {
-        private IUsuarioRepository _usuarioRepository;
-        public UsuarioService(IUsuarioRepository usuarioRepository)
+        private IUserRepository _usuarioRepository;
+        public UsuarioService(IUserRepository usuarioRepository)
         {
             this._usuarioRepository = usuarioRepository;
         }

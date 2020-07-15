@@ -12,9 +12,9 @@ namespace BLL.Impl
 {
     public class ProdutoService : ProdutoValidator, IProdutoService
     {
-        private IProdutoRepository _produtoRepository;
+        private IProductCategoryRepository _produtoRepository;
 
-        public ProdutoService(IProdutoRepository produtoRepository)
+        public ProdutoService(IProductCategoryRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
         }

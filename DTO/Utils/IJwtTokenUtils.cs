@@ -4,5 +4,4 @@
     {
         string GenerateToken(int id, bool isAdmin);
     }
-
 }
