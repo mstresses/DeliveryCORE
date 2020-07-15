@@ -29,9 +29,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<ActionResult> Cadastrar(UsuarioInsertViewModel usuarioViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<UsuarioInsertViewModel, UsuarioDTO>(); });
+            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<UsuarioInsertViewModel, Usuario>(); });
             IMapper mapper = configuration.CreateMapper();
-            UsuarioDTO dto = mapper.Map<UsuarioDTO>(usuarioViewModel);
+            Usuario dto = mapper.Map<Usuario>(usuarioViewModel);
             try
             {
                 await _usuarioService.Insert(dto);

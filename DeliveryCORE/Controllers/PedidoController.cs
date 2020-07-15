@@ -27,9 +27,9 @@ namespace DeliveryCORE.Controllers
         [HttpGet]
         public async Task<IActionResult> Cadastrar()
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteDTO, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(c=> c.NomeFantasia)); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Restaurante, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(c=> c.NomeFantasia)); });
             IMapper mapper = configuration.CreateMapper();
-            List<RestauranteDTO> listRestaurantes = await _restauranteService.GetRestaurantes();
+            List<Restaurante> listRestaurantes = await _restauranteService.GetRestaurantes();
             List<RestauranteSimpleResultSet> restaurantes = mapper.Map<List<RestauranteSimpleResultSet>>(listRestaurantes);
             ViewBag.Restaurantes = restaurantes;
 
@@ -39,9 +39,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(PedidoInsertViewModel pedidoViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<PedidoInsertViewModel, PedidoDTO>(); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<PedidoInsertViewModel, Pedido>(); });
             IMapper mapper = configuration.CreateMapper();
-            PedidoDTO pedido = mapper.Map<PedidoDTO>(pedidoViewModel);
+            Pedido pedido = mapper.Map<Pedido>(pedidoViewModel);
 
             try
             {

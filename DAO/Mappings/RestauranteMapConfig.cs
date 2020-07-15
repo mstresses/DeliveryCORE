@@ -1,18 +1,13 @@
 ﻿using DTO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DAO.Mappings
 {
-    public class RestauranteMapConfig : IEntityTypeConfiguration<RestauranteDTO>
+    public class RestauranteMapConfig : IEntityTypeConfiguration<Restaurante>
     {
-        public void Configure(EntityTypeBuilder<RestauranteDTO> builder)
+        public void Configure(EntityTypeBuilder<Restaurante> builder)
         {
-            builder.ToTable("RESTAURANTES");
-
             builder.Property(r => r.NomeFantasia).IsRequired().HasMaxLength(60);
 
             builder.Property(r => r.CNPJ).IsRequired().HasMaxLength(18);
@@ -20,7 +15,11 @@ namespace DAO.Mappings
 
             builder.Property(r => r.Telefone).IsRequired();
 
+            builder.Property(c => c.Endereco).IsRequired().HasMaxLength(60);
+
             builder.Property(r => r.Categoria).IsRequired();
+
+            builder.HasIndex(p => p.Produtos);
         }
     }
 }

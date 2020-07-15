@@ -24,9 +24,9 @@ namespace DeliveryCORE.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<ClienteDTO> clientes = await _clienteService.GetClientes();
+            List<Cliente> clientes = await _clienteService.GetClientes();
 
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteDTO, ClienteQueryViewModel>(); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Cliente, ClienteQueryViewModel>(); });
             IMapper mapper = configuration.CreateMapper();
             List<ClienteQueryViewModel> clienteViewModel = mapper.Map<List<ClienteQueryViewModel>>(clientes);
 
@@ -43,9 +43,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(ClienteInsertViewModel clienteViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteInsertViewModel, ClienteDTO>(); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteInsertViewModel, Cliente>(); });
             IMapper mapper = configuration.CreateMapper();
-            ClienteDTO cliente = mapper.Map<ClienteDTO>(clienteViewModel);
+            Cliente cliente = mapper.Map<Cliente>(clienteViewModel);
 
             try
             {
@@ -69,9 +69,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Atualizar(ClienteUpdateViewModel updateViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteUpdateViewModel, ClienteDTO>(); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ClienteUpdateViewModel, Cliente>(); });
             IMapper mapper = configuration.CreateMapper();
-            ClienteDTO cliente = mapper.Map<ClienteDTO>(updateViewModel);
+            Cliente cliente = mapper.Map<Cliente>(updateViewModel);
 
             try
             {
@@ -92,7 +92,7 @@ namespace DeliveryCORE.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Excluir(ClienteDTO cliente)
+        public async Task<IActionResult> Excluir(Cliente cliente)
         {
             try
             {

@@ -1,18 +1,13 @@
 ﻿using DTO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DAO.Mappings
 {
-    public class ProdutoMapConfig : IEntityTypeConfiguration<ProdutoDTO>
+    public class ProdutoMapConfig : IEntityTypeConfiguration<Produto>
     {
-        public void Configure(EntityTypeBuilder<ProdutoDTO> builder)
+        public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            builder.ToTable("PRODUTOS");
-
             builder.Property(p => p.Nome).IsRequired().HasMaxLength(60);
 
             builder.Property(p => p.Valor).IsRequired();

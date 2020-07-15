@@ -25,9 +25,9 @@ namespace DeliveryCORE.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<RestauranteDTO> restaurantes = await _restauranteService.GetRestaurantes();
+            List<Restaurante> restaurantes = await _restauranteService.GetRestaurantes();
 
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteDTO, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(s=> s.NomeFantasia));});
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Restaurante, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(s=> s.NomeFantasia));});
             IMapper mapper = configuration.CreateMapper();
             List<RestauranteSimpleResultSet> restaurantesViewModel = mapper.Map<List<RestauranteSimpleResultSet>>(restaurantes);
 
@@ -44,9 +44,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(RestauranteInsertViewModel restauranteViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, RestauranteDTO>(); });
+            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, Restaurante>(); });
             IMapper mapper = configuration.CreateMapper();
-            RestauranteDTO restaurante = mapper.Map<RestauranteDTO>(restauranteViewModel);
+            Restaurante restaurante = mapper.Map<Restaurante>(restauranteViewModel);
 
             try
             {
@@ -69,9 +69,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Atualizar(RestauranteUpdateViewModel updateViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteUpdateViewModel, ClienteDTO>(); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteUpdateViewModel, Cliente>(); });
             IMapper mapper = configuration.CreateMapper();
-            RestauranteDTO restaurante = mapper.Map<RestauranteDTO>(updateViewModel);
+            Restaurante restaurante = mapper.Map<Restaurante>(updateViewModel);
 
             try
             {
@@ -92,7 +92,7 @@ namespace DeliveryCORE.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Excluir(RestauranteDTO restaurante)
+        public async Task<IActionResult> Excluir(Restaurante restaurante)
         {
             try
             {

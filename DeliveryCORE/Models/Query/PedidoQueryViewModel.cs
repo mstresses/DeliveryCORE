@@ -9,8 +9,8 @@ namespace DeliveryCORE.Models.Query
 {
     public class PedidoQueryViewModel
     {
-        public RestauranteDTO Restaurante { get; set; }
-        public ProdutoDTO Produto { get; set; }
+        public Restaurante Restaurante { get; set; }
+        public Produto Produto { get; set; }
         public double Quantidade { get; set; }
         public double ValorTotal { get; set; }
         public bool TaxaEntrega { get; set; }
