@@ -7,7 +7,7 @@ namespace DTO
     public class Supplier : BaseEntity
     {
         public string CompanyName { get; private set; }
-        public string CNPJ { get; private set; }
+        public string Cnpj { get; private set; }
         public string TradingName { get; private set; }
         public Address Address { get; private set; }
         public string Telephone { get; private set; }
@@ -16,10 +16,10 @@ namespace DTO
 
         public Supplier() { }
 
-        public Supplier(string companyName, string cNPJ, string tradingName, string telephone, string email, Address address)
+        public Supplier(string companyName, string cnpj, string tradingName, string telephone, string email, Address address)
         {
             CompanyName = companyName;
-            CNPJ = cNPJ;
+            Cnpj = cnpj;
             TradingName = tradingName;
             Address = address;
             Telephone = telephone;
