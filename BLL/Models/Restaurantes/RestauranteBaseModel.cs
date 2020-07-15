@@ -12,6 +12,6 @@ namespace BLL.Models.Restaurantes
         public string Telefone { get; set; }
         public string Endereco { get; set; }
         public string Categoria { get; set; }
-        public virtual ICollection<Produto> Produtos { get; set; }
+        public virtual ICollection<ProductCategory> Produtos { get; set; }
     }
 }

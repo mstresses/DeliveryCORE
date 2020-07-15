@@ -7,7 +7,7 @@ namespace BLL.Models.Produtos
         public int Id { get; set; }
         public bool Deleted { get; set; }
 
-        public ProdutoResponseModel(int id, Restaurante restaurante, string nome, double valor, bool deleted)
+        public ProdutoResponseModel(int id, Supplier restaurante, string nome, double valor, bool deleted)
         {
             Id = id;
             Restaurante.NomeFantasia = restaurante.NomeFantasia.ToString();

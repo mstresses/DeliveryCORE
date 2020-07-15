@@ -22,7 +22,7 @@ namespace BLL.Impl
         //    return await _usuarioRepository.Authenticate(email, senha);
         //}
 
-        private async Task<UsuarioResponseModel> GetResponse(Usuario usuario)
+        private async Task<UsuarioResponseModel> GetResponse(User usuario)
         {
             return new UsuarioResponseModel(usuario.Id, usuario.Email, usuario.Role, usuario.Deleted);
         }
@@ -43,7 +43,7 @@ namespace BLL.Impl
 
         public async Task<UsuarioResponseModel> Create(UsuarioRequestModel usuarioRequestModel)
         {
-            var usuario = new Usuario(usuarioRequestModel.Email, usuarioRequestModel.Senha, usuarioRequestModel.Role);
+            var usuario = new User(usuarioRequestModel.Email, usuarioRequestModel.Senha, usuarioRequestModel.Role);
 
             usuario.Validate();
 

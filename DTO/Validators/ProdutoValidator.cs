@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace BLL.Validators
 {
-    public class ProdutoValidator : AbstractValidator<Produto>
+    public class ProdutoValidator : AbstractValidator<ProductCategory>
     {
         public ProdutoValidator()
         {

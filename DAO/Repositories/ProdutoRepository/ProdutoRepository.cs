@@ -5,7 +5,7 @@ using HBSIS.Padawan.Produtos.Infra.Repository.GenericRepository;
 
 namespace DAO.Repositories.ClienteRepository
 {
-    public class ProdutoRepository : GenericRepository<Produto>, IProdutoRepository
+    public class ProdutoRepository : GenericRepository<ProductCategory>, IProdutoRepository
     {
         public ProdutoRepository(DeliveryContext dbContext) : base(dbContext)
         {

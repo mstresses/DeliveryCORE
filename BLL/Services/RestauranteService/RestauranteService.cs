@@ -23,7 +23,7 @@ namespace BLL.Impl
             this._restauranteRepository = restauranteRepository;
         }
 
-        public async Task Insert(Restaurante restaurante)
+        public async Task Insert(Supplier restaurante)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace BLL.Impl
             }
         }
 
-        public async Task Update(Restaurante restaurante)
+        public async Task Update(Supplier restaurante)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace BLL.Impl
             }
         }
 
-        public async Task Delete(Restaurante restaurante)
+        public async Task Delete(Supplier restaurante)
         {
             try
             {
@@ -72,13 +72,13 @@ namespace BLL.Impl
             }
         }
 
-        Task<List<Restaurante>> IRestauranteService.GetRestaurantes()
+        Task<List<Supplier>> IRestauranteService.GetRestaurantes()
         {
             return _restauranteRepository.GetRestaurantes();
 
         }
 
-        public async Task<List<Restaurante>> GetRestaurantesByCategorias(string categoria)
+        public async Task<List<Supplier>> GetRestaurantesByCategorias(string categoria)
         {
             return await _restauranteRepository.GetRestaurantesByCategorias(categoria);
         }

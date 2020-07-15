@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAO.Mappings
 {
-    internal class UsuarioMapConfig : IEntityTypeConfiguration<Usuario>
+    internal class UsuarioMapConfig : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Usuario> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(u => u.Email).HasMaxLength(100);
             builder.HasIndex(u => u.Email).IsUnique(true).HasName("UQ_USUARIO_EMAIL");

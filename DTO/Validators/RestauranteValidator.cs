@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace BLL.Validators
 {
-    public class RestauranteValidator : AbstractValidator<Restaurante>
+    public class RestauranteValidator : AbstractValidator<Supplier>
     {
         public RestauranteValidator()
         {

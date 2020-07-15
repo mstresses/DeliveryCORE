@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAO.Mappings
 {
-    public class RestauranteMapConfig : IEntityTypeConfiguration<Restaurante>
+    public class RestauranteMapConfig : IEntityTypeConfiguration<Supplier>
     {
-        public void Configure(EntityTypeBuilder<Restaurante> builder)
+        public void Configure(EntityTypeBuilder<Supplier> builder)
         {
             builder.Property(r => r.NomeFantasia).IsRequired().HasMaxLength(60);
 

@@ -1,6 +1,6 @@
 ﻿namespace DTO.Interfaces
 {
-    public interface IRestauranteRepository : IGenericRepository<Restaurante>
+    public interface IRestauranteRepository : IGenericRepository<Supplier>
     {
     }
 }

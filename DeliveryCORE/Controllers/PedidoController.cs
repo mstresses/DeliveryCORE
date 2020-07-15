@@ -27,9 +27,9 @@ namespace DeliveryCORE.Controllers
         [HttpGet]
         public async Task<IActionResult> Cadastrar()
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Restaurante, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(c=> c.NomeFantasia)); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Supplier, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(c=> c.NomeFantasia)); });
             IMapper mapper = configuration.CreateMapper();
-            List<Restaurante> listRestaurantes = await _restauranteService.GetRestaurantes();
+            List<Supplier> listRestaurantes = await _restauranteService.GetRestaurantes();
             List<RestauranteSimpleResultSet> restaurantes = mapper.Map<List<RestauranteSimpleResultSet>>(listRestaurantes);
             ViewBag.Restaurantes = restaurantes;
 

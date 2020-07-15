@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAO.Mappings
 {
-    public class ProdutoMapConfig : IEntityTypeConfiguration<Produto>
+    public class ProdutoMapConfig : IEntityTypeConfiguration<ProductCategory>
     {
-        public void Configure(EntityTypeBuilder<Produto> builder)
+        public void Configure(EntityTypeBuilder<ProductCategory> builder)
         {
             builder.Property(p => p.Nome).IsRequired().HasMaxLength(60);
 

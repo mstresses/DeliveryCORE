@@ -19,7 +19,7 @@ namespace BLL.Impl
             _produtoRepository = produtoRepository;
         }
 
-        private async Task<ProdutoResponseModel> GetResponse(Produto produto)
+        private async Task<ProdutoResponseModel> GetResponse(ProductCategory produto)
         {
             return new ProdutoResponseModel(produto.Id, produto.Restaurante.NomeFantasia, produto.Nome, produto.Valor, produto.Deleted);
         }
@@ -40,7 +40,7 @@ namespace BLL.Impl
 
         public async Task<ProdutoResponseModel> Create(ProdutoRequestModel produtoRequestModel)
         {
-            var produto = new Produto(produtoRequestModel.Restaurante.NomeFantasia, produtoRequestModel.Nome, produtoRequestModel.Valor);
+            var produto = new ProductCategory(produtoRequestModel.Restaurante.NomeFantasia, produtoRequestModel.Nome, produtoRequestModel.Valor);
 
             produto.Validate();
 
