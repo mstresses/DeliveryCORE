@@ -17,16 +17,16 @@ namespace BLL.Validators
             RuleFor(f => f.NomeFantasia).NotEmpty().WithMessage("O Nome Fantasia deve ser informado.")
                                         .MaximumLength(100).WithMessage("O Nome Fantasia deve conter no máximo 100 caracteres.");
 
-            RuleFor(f => f.Endereco.Numero).NotEmpty().WithMessage("O número deve ser informada.")
-                                           .MaximumLength(60).WithMessage("Número de caracteres excedido.");
+            RuleFor(f => f.Endereco.Numero).NotEmpty().WithMessage("O número deve ser informada.");
+                                           
             RuleFor(f => f.Endereco.Rua).NotEmpty().WithMessage("A rua deve ser informada.")
-                                        .MaximumLength(60).WithMessage("Número de caracteres excedido.");
+                                        .MaximumLength(100).WithMessage("Número de caracteres excedido.");
             RuleFor(f => f.Endereco.UF).NotEmpty().WithMessage("O UF deve ser informado.")
                                        .MaximumLength(2).WithMessage("Número de caracteres excedido.");
             RuleFor(f => f.Endereco.Pais).NotEmpty().WithMessage("O país deve ser informado.")
-                                         .MaximumLength(60).WithMessage("Número de caracteres excedido.");
+                                         .MaximumLength(100).WithMessage("Número de caracteres excedido.");
             RuleFor(f => f.Endereco.Cidade).NotEmpty().WithMessage("A cidade deve ser informada.")
-                                           .MaximumLength(60).WithMessage("Número de caracteres excedido.");
+                                           .MaximumLength(100).WithMessage("Número de caracteres excedido.");
 
             RuleFor(f => f.TelefoneDeContato).NotEmpty().WithMessage("O Telefone deve ser informado.");
 

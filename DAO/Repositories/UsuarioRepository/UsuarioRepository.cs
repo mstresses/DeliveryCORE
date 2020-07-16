@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DAO.Repositories.ClienteRepository
 {
-    public class UserRepository : GenericRepository<Usuario>, IUsuarioRepository
+    public class UsuarioRepository : GenericRepository<Usuario>, IUsuarioRepository
     {
-        public UserRepository(MainContext context) : base(context)
+        public UsuarioRepository(MainContext context) : base(context)
         {
         }
 

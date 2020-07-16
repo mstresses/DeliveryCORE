@@ -7,10 +7,10 @@ namespace BLL.Validators
     {
         public CategoriaDeProdutosValidator()
         {
-            RuleFor(r => r.Nome).NotEmpty().WithMessage("Category must be informed.")
-                                .MaximumLength(60).WithMessage("Number of characters exceeded.");
+            RuleFor(r => r.Nome).NotEmpty().WithMessage("A categoria deve ser informada.")
+                                .MaximumLength(100).WithMessage("Número de caracteres excedido.");
 
-            RuleFor(p => p.FornecedorId).NotEqual(0).WithMessage("product category id cannot be zero");
+            RuleFor(p => p.FornecedorId).NotEqual(0).WithMessage("O id da categoria não pode ser 0.");
         }
     }
 }

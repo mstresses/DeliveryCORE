@@ -2,6 +2,7 @@
 using DTO.Entities;
 using DTO.Entities.Base;
 using FluentValidation;
+using System.Collections.Generic;
 
 namespace DTO
 {
@@ -13,6 +14,7 @@ namespace DTO
         public Endereco Endereco { get; protected set; }
         public string TelefoneDeContato { get; protected set; }
         public string EmailDeContato { get; protected set; }
+        public virtual ICollection<CategoriaDeProduto> CategoriaDeProduto { get; protected set; }
 
         protected Fornecedor() { }
 

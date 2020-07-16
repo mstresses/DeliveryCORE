@@ -12,7 +12,7 @@ namespace BLL.Validators
                                  .MaximumLength(100).WithMessage("Número de caracteres excedido.");
 
             RuleFor(u => u.Senha).NotEmpty().WithMessage("A senha deve ser informada.")
-                                 .MaximumLength(15).WithMessage("Número de caracteres excedido.");
+                                 .MaximumLength(64).WithMessage("Número de caracteres excedido.");
         }
     }
 }
