@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Repositories.ClienteRepository
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class UserRepository : GenericRepository<Usuario>, IUsuarioRepository
     {
         public UserRepository(MainContext context) : base(context)
         {
@@ -19,7 +19,7 @@ namespace DAO.Repositories.ClienteRepository
             await _dbContext.SaveChangesAsync();
         }
 
-        public override async Task Create(User entity)
+        public override async Task Create(Usuario entity)
         {
             if (await VerifyUserLoginAlredyExists(entity))
             {
@@ -29,7 +29,7 @@ namespace DAO.Repositories.ClienteRepository
             return;
         }
 
-        public override async Task Update(User entity)
+        public override async Task Update(Usuario entity)
         {
             if (await VerifyUserLoginAlredyExists(entity))
             {
@@ -38,13 +38,13 @@ namespace DAO.Repositories.ClienteRepository
             _dbSet.Update(entity);
         }
 
-        public async Task<User> GetByLogin(string login)
+        public async Task<Usuario> GetByLogin(string login)
         {
-            User user = await Query().SingleOrDefaultAsync(u => u.Login == login && !u.IsDeleted);
+            Usuario user = await Query().SingleOrDefaultAsync(u => u.Login == login && !u.IsDeleted);
             return user;
         }
 
-        public async Task<bool> VerifyUserLoginAlredyExists(User user)
+        public async Task<bool> VerifyUserLoginAlredyExists(Usuario user)
         {
             return await _dbSet.AnyAsync(u => u.Login == user.Login && !u.IsDeleted && u.Id != user.Id);
         }

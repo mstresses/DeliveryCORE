@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Repositories.ClienteRepository
 {
-    public class SupplierRepository : GenericRepository<Supplier>, ISupplierRepository
+    public class SupplierRepository : GenericRepository<Fornecedor>, IFornecedorRepository
     {
         public SupplierRepository(MainContext context) : base(context)
         {
@@ -20,32 +20,32 @@ namespace DAO.Repositories.ClienteRepository
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Supplier>> GetAll()
+        public async Task<IEnumerable<Fornecedor>> GetAll()
         {
             return await Query().Where(s => !s.IsDeleted).ToListAsync();
         }
 
-        public async Task<Supplier> GetByCnpj(string cnpj)
+        public async Task<Fornecedor> GetByCnpj(string cnpj)
         {
             return await Query().SingleOrDefaultAsync(s => !s.IsDeleted && s.Cnpj == cnpj);
         }
 
-        public override async Task Create(Supplier entity)
+        public override async Task Create(Fornecedor entity)
         {
             await _dbSet.AddAsync(entity);
         }
 
-        public override async Task Update(Supplier entity)
+        public override async Task Update(Fornecedor entity)
         {
             _dbSet.Update(entity);
         }
 
-        public async Task<bool> VerifyIfSupplierEmailAlredyExists(Supplier supplier)
+        public async Task<bool> VerifyIfSupplierEmailAlredyExists(Fornecedor supplier)
         {
             return await _dbSet.AnyAsync(s => s.Email == supplier.Email && !s.IsDeleted);
         }
 
-        public async Task<bool> VerifyIfSupplierCNPJAlredyExists(Supplier supplier)
+        public async Task<bool> VerifyIfSupplierCNPJAlredyExists(Fornecedor supplier)
         {
             return await _dbSet.AnyAsync(s => s.Cnpj == supplier.Cnpj && !s.IsDeleted);
         }

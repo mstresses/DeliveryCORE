@@ -25,9 +25,9 @@ namespace DeliveryCORE.Controllers
         [HttpGet]
         public async Task<IActionResult> Cadastrar()
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Supplier, RestauranteSimpleResultSet>().ForMember(c => c.Nome, opts => opts.MapFrom(c => c.NomeFantasia)); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Fornecedor, RestauranteSimpleResultSet>().ForMember(c => c.Nome, opts => opts.MapFrom(c => c.NomeFantasia)); });
             IMapper mapper = configuration.CreateMapper();
-            List<Supplier> listRestaurantes = await _restauranteService.GetRestaurantes();
+            List<Fornecedor> listRestaurantes = await _restauranteService.GetRestaurantes();
             List<RestauranteSimpleResultSet> restaurantes = mapper.Map<List<RestauranteSimpleResultSet>>(listRestaurantes);
             ViewBag.Restaurantes = restaurantes;
 
@@ -37,9 +37,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(ProdutoInsertViewModel produtoViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ProdutoInsertViewModel, ProductCategory>(); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ProdutoInsertViewModel, CategoriaDeProduto>(); });
             IMapper mapper = configuration.CreateMapper();
-            ProductCategory produto = mapper.Map<ProductCategory>(produtoViewModel);
+            CategoriaDeProduto produto = mapper.Map<CategoriaDeProduto>(produtoViewModel);
 
             try
             {
@@ -55,9 +55,9 @@ namespace DeliveryCORE.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<ProductCategory> produtos = await _produtoService.GetProdutos();
+            List<CategoriaDeProduto> produtos = await _produtoService.GetProdutos();
 
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<ProductCategory, ProdutoQueryViewModel>(); });
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<CategoriaDeProduto, ProdutoQueryViewModel>(); });
             IMapper mapper = configuration.CreateMapper();
             List<ProdutoQueryViewModel> produtoViewModel = mapper.Map<List<ProdutoQueryViewModel>>(produtos);
 
@@ -68,7 +68,7 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> GetProdutosRestaurante(int id)
         {
-            List<ProductCategory> produtos = await _produtoService.GetProductsByRestaurant(id);
+            List<CategoriaDeProduto> produtos = await _produtoService.GetProductsByRestaurant(id);
             return Json(produtos);
         }
     }

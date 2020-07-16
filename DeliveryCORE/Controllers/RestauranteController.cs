@@ -25,9 +25,9 @@ namespace DeliveryCORE.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Supplier> restaurantes = await _restauranteService.GetRestaurantes();
+            List<Fornecedor> restaurantes = await _restauranteService.GetRestaurantes();
 
-            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Supplier, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(s=> s.NomeFantasia));});
+            var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<Fornecedor, RestauranteSimpleResultSet>().ForMember(c=> c.Nome, opts=> opts.MapFrom(s=> s.NomeFantasia));});
             IMapper mapper = configuration.CreateMapper();
             List<RestauranteSimpleResultSet> restaurantesViewModel = mapper.Map<List<RestauranteSimpleResultSet>>(restaurantes);
 
@@ -44,9 +44,9 @@ namespace DeliveryCORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(RestauranteInsertViewModel restauranteViewModel)
         {
-            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, Supplier>(); });
+            var configuration = new MapperConfiguration(cfg => {cfg.CreateMap<RestauranteInsertViewModel, Fornecedor>(); });
             IMapper mapper = configuration.CreateMapper();
-            Supplier restaurante = mapper.Map<Supplier>(restauranteViewModel);
+            Fornecedor restaurante = mapper.Map<Fornecedor>(restauranteViewModel);
 
             try
             {
@@ -71,7 +71,7 @@ namespace DeliveryCORE.Controllers
         {
             var configuration = new MapperConfiguration(cfg => { cfg.CreateMap<RestauranteUpdateViewModel, Cliente>(); });
             IMapper mapper = configuration.CreateMapper();
-            Supplier restaurante = mapper.Map<Supplier>(updateViewModel);
+            Fornecedor restaurante = mapper.Map<Fornecedor>(updateViewModel);
 
             try
             {
@@ -92,7 +92,7 @@ namespace DeliveryCORE.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Excluir(Supplier restaurante)
+        public async Task<IActionResult> Excluir(Fornecedor restaurante)
         {
             try
             {

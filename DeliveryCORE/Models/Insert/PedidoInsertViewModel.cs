@@ -12,10 +12,10 @@ namespace DeliveryCORE.Models.Insert
     public class PedidoInsertViewModel
     {
         [DisplayName("Restaurante"), Required(ErrorMessage = "O restaurante deve ser informado.")]
-        public Supplier Restaurante { get; set; }
+        public Fornecedor Restaurante { get; set; }
 
         [DisplayName("Produto"), Required(ErrorMessage = "O produto deve ser informado.")]
-        public ProductCategory Produto { get; set; }
+        public CategoriaDeProduto Produto { get; set; }
 
         [DisplayName("Quantidade"), MinLength(0), Required(ErrorMessage = "A quantidade deve ser informada.")]
         public double Quantidade { get; set; }

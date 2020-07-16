@@ -10,37 +10,37 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class ProdutoService : ProdutoValidator, IProdutoService
+    public class ProdutoService : CategoriaDeProdutosValidator, IProdutoService
     {
-        private IProductCategoryRepository _produtoRepository;
+        private ICategoriaDeProdutoRepository _produtoRepository;
 
-        public ProdutoService(IProductCategoryRepository produtoRepository)
+        public ProdutoService(ICategoriaDeProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
         }
 
-        private async Task<ProdutoResponseModel> GetResponse(ProductCategory produto)
+        private async Task<ProductCategoryResponseModel> GetResponse(CategoriaDeProduto produto)
         {
-            return new ProdutoResponseModel(produto.Id, produto.Restaurante.NomeFantasia, produto.Nome, produto.Valor, produto.Deleted);
+            return new ProductCategoryResponseModel(produto.Id, produto.Restaurante.NomeFantasia, produto.Nome, produto.Valor, produto.Deleted);
         }
 
-        public async Task<IEnumerable<ProdutoResponseModel>> GetAll()
+        public async Task<IEnumerable<ProductCategoryResponseModel>> GetAll()
         {
             var produtos = await _produtoRepository.GetAll();
 
-            return produtos.Select(p => new ProdutoResponseModel(p.Id, p.Restaurante.NomeFantasia.ToString(), p.Nome, p.Valor, p.Deleted));
+            return produtos.Select(p => new ProductCategoryResponseModel(p.Id, p.Restaurante.NomeFantasia.ToString(), p.Nome, p.Valor, p.Deleted));
         }
 
-        public async Task<ProdutoResponseModel> GetById(int id)
+        public async Task<ProductCategoryResponseModel> GetById(int id)
         {
             var produto = await _produtoRepository.GetById(id);
 
             return await GetResponse(produto);
         }
 
-        public async Task<ProdutoResponseModel> Create(ProdutoRequestModel produtoRequestModel)
+        public async Task<ProductCategoryResponseModel> Create(ProductCategoryRequestModel produtoRequestModel)
         {
-            var produto = new ProductCategory(produtoRequestModel.Restaurante.NomeFantasia, produtoRequestModel.Nome, produtoRequestModel.Valor);
+            var produto = new CategoriaDeProduto(produtoRequestModel.Restaurante.NomeFantasia, produtoRequestModel.Nome, produtoRequestModel.Valor);
 
             produto.Validate();
 
@@ -49,7 +49,7 @@ namespace BLL.Impl
             return await GetResponse(produto);
         }
 
-        public async Task<ProdutoResponseModel> Update(int id, ProdutoRequestModel produtoRequestModel)
+        public async Task<ProductCategoryResponseModel> Update(int id, ProductCategoryRequestModel produtoRequestModel)
         {
             var produto = await _produtoRepository.GetById(id);
 

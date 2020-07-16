@@ -11,8 +11,8 @@ namespace BLL.Impl
 {
     public class UsuarioService : UsuarioValidator, IUsuarioService
     {
-        private IUserRepository _usuarioRepository;
-        public UsuarioService(IUserRepository usuarioRepository)
+        private IUsuarioRepository _usuarioRepository;
+        public UsuarioService(IUsuarioRepository usuarioRepository)
         {
             this._usuarioRepository = usuarioRepository;
         }
@@ -22,7 +22,7 @@ namespace BLL.Impl
         //    return await _usuarioRepository.Authenticate(email, senha);
         //}
 
-        private async Task<UsuarioResponseModel> GetResponse(User usuario)
+        private async Task<UsuarioResponseModel> GetResponse(Usuario usuario)
         {
             return new UsuarioResponseModel(usuario.Id, usuario.Email, usuario.Role, usuario.Deleted);
         }
@@ -43,7 +43,7 @@ namespace BLL.Impl
 
         public async Task<UsuarioResponseModel> Create(UsuarioRequestModel usuarioRequestModel)
         {
-            var usuario = new User(usuarioRequestModel.Email, usuarioRequestModel.Senha, usuarioRequestModel.Role);
+            var usuario = new Usuario(usuarioRequestModel.Email, usuarioRequestModel.Senha, usuarioRequestModel.Role);
 
             usuario.Validate();
 

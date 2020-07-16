@@ -9,6 +9,5 @@ namespace DTO
         Task Create(TEntity entity);
         Task Update(TEntity entity);
         Task Delete(int id);
-        Task Save();
     }
 }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAO.Mappings
 {
-    public class SupplierMapConfig : IEntityTypeConfiguration<Supplier>
+    public class SupplierMapConfig : IEntityTypeConfiguration<Fornecedor>
     {
-        public void Configure(EntityTypeBuilder<Supplier> builder)
+        public void Configure(EntityTypeBuilder<Fornecedor> builder)
         {
             builder.Property(r => r.CompanyName).IsRequired().HasMaxLength(60);
 

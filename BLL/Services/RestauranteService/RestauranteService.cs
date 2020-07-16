@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class RestauranteService : RestauranteValidator, IRestauranteService
+    public class RestauranteService : FornecedorValidator, IRestauranteService
     {
         private IRestauranteRepository _restauranteRepository;
 
@@ -23,7 +23,7 @@ namespace BLL.Impl
             this._restauranteRepository = restauranteRepository;
         }
 
-        public async Task Insert(Supplier restaurante)
+        public async Task Insert(Fornecedor restaurante)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace BLL.Impl
             }
         }
 
-        public async Task Update(Supplier restaurante)
+        public async Task Update(Fornecedor restaurante)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace BLL.Impl
             }
         }
 
-        public async Task Delete(Supplier restaurante)
+        public async Task Delete(Fornecedor restaurante)
         {
             try
             {
@@ -72,13 +72,13 @@ namespace BLL.Impl
             }
         }
 
-        Task<List<Supplier>> IRestauranteService.GetRestaurantes()
+        Task<List<Fornecedor>> IRestauranteService.GetRestaurantes()
         {
             return _restauranteRepository.GetRestaurantes();
 
         }
 
-        public async Task<List<Supplier>> GetRestaurantesByCategorias(string categoria)
+        public async Task<List<Fornecedor>> GetRestaurantesByCategorias(string categoria)
         {
             return await _restauranteRepository.GetRestaurantesByCategorias(categoria);
         }
