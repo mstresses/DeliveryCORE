@@ -3,11 +3,11 @@
     public abstract class BaseEntity
     {
         public int Id { get; set; }
-        public bool IsDeleted { get; private set; } = false;
+        public bool Deleted { get; protected set; }
 
-        public void SetAsDeleted()
+        public void Delete()
         {
-            IsDeleted = true;
+            Deleted = true;
         }
     }
 }

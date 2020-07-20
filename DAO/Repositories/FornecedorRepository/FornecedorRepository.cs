@@ -1,9 +1,9 @@
 ﻿using DAO.Context;
+using DAO.Repositories.GenericRepository;
 using DTO;
 using DTO.Interfaces;
-using HBSIS.Padawan.Produtos.Infra.Repository.GenericRepository;
 
-namespace DAO.Repositories.ClienteRepository
+namespace DAO.Repositories.FornecedorRepository
 {
     public class FornecedorRepository : GenericRepository<Fornecedor>, IFornecedorRepository
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BLL.Services
+namespace BLL.Services.UsuarioService
 {
     public interface IUsuarioService
     {

@@ -1,15 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace DTO.Entities
+﻿namespace DTO.Entities
 {
-    [Owned]
     public class Endereco
     {
-        public string Numero { get; private set; }
-        public string Rua { get; private set; }
-        public string UF { get; private set; }
-        public string Pais { get; private set; }
-        public string Cidade { get; private set; }
+        public string Numero { get; protected set; }
+        public string Rua { get; protected set; }
+        public string UF { get; protected set; }
+        public string Pais { get; protected set; }
+        public string Cidade { get; protected set; }
 
         public Endereco() { }
 

@@ -11,7 +11,7 @@ namespace DTO
         public string RazaoSocial { get; protected set; }
         public string Cnpj { get; protected set; }
         public string NomeFantasia { get; protected set; }
-        public Endereco Endereco { get; protected set; }
+        public Endereco Endereco { get; set; }
         public string TelefoneDeContato { get; protected set; }
         public string EmailDeContato { get; protected set; }
         public virtual ICollection<CategoriaDeProduto> CategoriaDeProduto { get; protected set; }

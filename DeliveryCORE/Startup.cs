@@ -36,13 +36,13 @@ namespace DeliveryCORE
             services.AddTransient<IClienteService, ClienteService>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
 
-            services.AddTransient<IProdutoService, ProdutoService>();
+            services.AddTransient<IProdutoService, CategoriaProdutoService>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
             services.AddTransient<IPedidoService, PedidoService>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
 
-            services.AddTransient<IRestauranteService, RestauranteService>();
+            services.AddTransient<IRestauranteService, FornecedorService>();
             services.AddTransient<IRestauranteRepository, RestauranteRepository>();
 
             services.AddControllersWithViews();

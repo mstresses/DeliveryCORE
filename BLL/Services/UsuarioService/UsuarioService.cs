@@ -1,5 +1,4 @@
 ﻿using BLL.Models.Usuarios;
-using BLL.Services;
 using BLL.Validators;
 using DTO;
 using DTO.Interfaces;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BLL.Impl
+namespace BLL.Services.UsuarioService
 {
     public class UsuarioService : UsuarioValidator, IUsuarioService
     {
@@ -24,14 +23,14 @@ namespace BLL.Impl
 
         private async Task<UsuarioResponseModel> GetResponse(Usuario usuario)
         {
-            return new UsuarioResponseModel(usuario.Id, usuario.Email, usuario.Role, usuario.Deleted);
+            return new UsuarioResponseModel(usuario.Login);
         }
 
         public async Task<IEnumerable<UsuarioResponseModel>> GetAll()
         {
             var usuarios = await _usuarioRepository.GetAll();
 
-            return usuarios.Select(u => new UsuarioResponseModel(u.Id, u.Email, u.Role, u.Deleted));
+            return usuarios.Select(u => new UsuarioResponseModel(u.Login));
         }
 
         public async Task<UsuarioResponseModel> GetById(int id)
@@ -43,7 +42,7 @@ namespace BLL.Impl
 
         public async Task<UsuarioResponseModel> Create(UsuarioRequestModel usuarioRequestModel)
         {
-            var usuario = new Usuario(usuarioRequestModel.Email, usuarioRequestModel.Senha, usuarioRequestModel.Role);
+            var usuario = new Usuario(usuarioRequestModel.Login, usuarioRequestModel.Senha);
 
             usuario.Validate();
 
@@ -56,7 +55,7 @@ namespace BLL.Impl
         {
             var usuario = await _usuarioRepository.GetById(id);
 
-            usuario.Update(usuarioRequestModel.Email, usuarioRequestModel.Senha, usuarioRequestModel.Role);
+            usuario.Update(usuarioRequestModel.Login, usuarioRequestModel.Senha);
 
             usuario.Validate();
 
